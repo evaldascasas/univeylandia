@@ -18,7 +18,7 @@ class Client {
   private $telefon;
   private $id_rol;
   private $actiu;
-  private $hash;
+  private $hash_validacio;
 
 //constructor
 
@@ -186,10 +186,10 @@ function __construct14($nom,$cognom1,$cognom2,$email,$contrasenya,$date,$adreca,
 
 
   function getHash(){
-    return $hash;
+    return $hash_validacio;
   }
-  function setHash($hash){
-    $this->hash = $hash;
+  function setHash($hash_validacio){
+    $this->hash_validacio = $hash_validacio;
   }
 
 
@@ -587,72 +587,66 @@ echo '<!-- Modal -->
   }
 
 
-    public function validarLogin()
-    {
-      $connection = crearConnexio();
+  public function validarLogin()
+  {
+    $conn = crearConnexio();
 
-      $sql = "SELECT id_usuari, id_rol, password, email FROM USUARI WHERE email=? AND id_rol=1 AND actiu=1";
-        echo 'sql funcional';
-      //$sql = "SELECT password FROM USUARI WHERE email=? AND id_rol='1' ";
+    $sql = "SELECT id_usuari, id_rol, password, email FROM USUARI WHERE email=? AND id_rol=1 AND actiu=1";
+    //$sql = "SELECT password FROM USUARI WHERE email=? AND id_rol='1' ";
 
-      $stmt = $connection->prepare($sql);
+    $stmt = $conn->prepare($sql);
 
-      $stmt->bind_param("s",$this->email);
+    $stmt->bind_param("s",$this->email);
 
-      $stmt->execute();
+    $stmt->execute();
 
-      $result = $stmt->get_result();
+    $result = $stmt->get_result();
 
-      /* now you can fetch the results into an array - NICE */
-      while ($row = $result->fetch_assoc()) {
-          // use your $myrow array as you would with any other fetch
-          var_dump($row['id_usuari'], $row['id_rol'], $row['email']);
-          $username = $row['email'];
-          $userID = $row['id_usuari'];
-          $rol = $row['id_rol'];
-          $hash = $row['password'];
-
-      }
-
-      //$stmt->bind_result($hash);
-
-      //$stmt->fetch();
-
-      $isValid = password_verify($this->password, $hash);
-      //$isValid = true;
-      if ($isValid)
-      {
-        echo 'VALID';
-        session_start();
-
-        if (array_key_exists('remember', $_POST)) {
-            // Crear una nova cookie de sessió que expira en 7 dies
-            setcookie('idu', $username, time() + 7 * 24 * 60 * 60);
-            //Reemplaçar el ID de la sessio actual amb una nova i mantenir la informació de la sessio actual
-            session_regenerate_id(true);
-        } elseif (!$_POST['remember']) {
-            //Si hi ha una COOKIE creada, atrassar-la en el temps per a que la elimine
-            if (isset($_COOKIE['idu'])) {
-                $past = time() - 100;
-                setcookie(idu, gone, $past);
-            }
-        }
-
-        $_SESSION['id_usuari'] = $userID; //$row['id_usuari'];
-        $_SESSION['username'] = $username; //$row['email'];
-        $_SESSION['rol'] = $rol;//$row['id_rol'];
-
-        echo $_SESSION['username'], $_SESSION['id_usuari'], $_SESSION['rol'];
-
-        return true;
-      }
-      else
-      {
-        echo 'NO VALID';
-        return false;
-      }
-      $connection->close();
+    /* now you can fetch the results into an array - NICE */
+    while ($row = $result->fetch_assoc()) {
+        // use your $myrow array as you would with any other fetch
+        var_dump($row['id_usuari'], $row['id_rol'], $row['email']);
+        $username = $row['email'];
+        $userID = $row['id_usuari'];
+        $rol = $row['id_rol'];
+        $hash = $row['password'];
     }
+
+    $isValid = password_verify($this->pass, $hash);
+
+    if ($isValid)
+    {
+      echo 'VALID';
+      session_start();
+
+      if (array_key_exists('remember', $_POST)) {
+          // Crear una nova cookie de sessió que expira en 7 dies
+          setcookie('idu', $username, time() + 7 * 24 * 60 * 60);
+          //Reemplaçar el ID de la sessio actual amb una nova i mantenir la informació de la sessio actual
+          session_regenerate_id(true);
+      } elseif (!$_POST['remember']) {
+          //Si hi ha una COOKIE creada, atrassar-la en el temps per a que la elimine
+          if (isset($_COOKIE['idu'])) {
+              $past = time() - 100;
+              setcookie(idu, gone, $past);
+          }
+      }
+
+      $_SESSION['id_usuari'] = $userID; //$row['id_usuari'];
+      $_SESSION['username'] = $username; //$row['email'];
+      $_SESSION['rol'] = $rol;//$row['id_rol'];
+
+      echo $_SESSION['username'], $_SESSION['id_usuari'], $_SESSION['rol'];
+
+      return true;
+    }
+    else
+    {
+      //echo 'NO VALID';
+      return false;
+    }
+    $conn->close();
+  }
 
 	  public static function cercarDadesClient($email)
   {
