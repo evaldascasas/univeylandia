@@ -32,18 +32,18 @@ if ($_SESSION['rol']==1 ) :?>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="img/mapa_parc.jpg">Mapa</a>
+          <a class="nav-link" href="/img/mapa_parc.jpg">Mapa</a>
         </li>
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil.php"><?php echo $_SESSION['username']?></a>
+          <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/perfil.php"><?php echo $_SESSION['username']?></a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
-            <li><a class="dropdown-item" href="logout.php">Tancar Sessio</a></li>
+            <li><a class="dropdown-item" href="/perfil.php">Perfil</a></li>
+            <li><a class="dropdown-item" href="/logout.php">Tancar Sessio</a></li>
           </ul>
         </li>
       <li>
-        <button type="button" class="btn btn-default btn-sm" onclick="window.location.href='cistella/clases/carrito.php'">
-          <img src="img/carrito.png">
+        <button type="button" class="btn btn-default btn-sm" onclick="window.location.href='/cistella/clases/carrito.php'">
+          <img src="/img/carrito.png">
         </button>
       </li>
       </ul>
@@ -71,15 +71,14 @@ if ($_SESSION['rol']==1 ) :?>
         <a class="nav-link dropdown-toggle "  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Hotel      </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <li><a class="dropdown-item" href="/hotel/habitacions.php">Habitacions</a></li>
-
           <li><a class="dropdown-item" href="/hotel/restaurant.php">Restaurants</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle "  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Entrades      </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="Entrades/parc/entrades1.php">Parc</a></li>
-          <li><a class="dropdown-item" href="Entrades/hoteliparc/entrades2.php">Parc+Hotel</a></li>
+          <li><a class="dropdown-item" href="/Entrades/parc/entrades1.php">Parc</a></li>
+          <li><a class="dropdown-item" href="/Entrades/hoteliparc/entrades2.php">Parc+Hotel</a></li>
         </ul>
       </li>
 
@@ -103,19 +102,19 @@ if ($_SESSION['rol']==2 ) :?>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="img/mapa_parc.jpg">Mapa</a>
+          <a class="nav-link" href="/img/mapa_parc.jpg">Mapa</a>
         </li>
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil.php"><?php echo $_SESSION['username']?></a>
+          <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/perfil.php"><?php echo $_SESSION['username']?></a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
-            <li><a class="dropdown-item" href="gestio/index.php">Gestio</a></li>
-            <li><a class="dropdown-item" href="logout.php">Tancar Sessio</a></li>
+            <li><a class="dropdown-item" href="/perfil.php">Perfil</a></li>
+            <li><a class="dropdown-item" href="/gestio/index.php">Gestio</a></li>
+            <li><a class="dropdown-item" href="/logout.php">Tancar Sessio</a></li>
           </ul>
         </li>
       <li>
         <button type="button" class="btn btn-default btn-sm" onclick="window.location.href='cistella/clases/carrito.php'">
-          <img src="img/carrito.png">
+          <img src="/img/carrito.png">
         </button>
       </li>
       </ul>
@@ -149,8 +148,8 @@ if ($_SESSION['rol']==2 ) :?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle "  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Entrades      </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="Entrades/parc/entrades1.php">Parc</a></li>
-          <li><a class="dropdown-item" href="Entrades/hoteliparc/entrades2.php">Parc+Hotel</a></li>
+          <li><a class="dropdown-item" href="/Entrades/parc/entrades1.php">Parc</a></li>
+          <li><a class="dropdown-item" href="/Entrades/hoteliparc/entrades2.php">Parc+Hotel</a></li>
         </ul>
       </li>
 
@@ -175,19 +174,19 @@ if ($_SESSION['rol']==3 ) :?>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="img/mapa_parc.jpg">Mapa</a>
+          <a class="nav-link" href="/img/mapa_parc.jpg">Mapa</a>
         </li>
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil.php"><?php echo $_SESSION['username']?></a>
+          <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/perfil.php"><?php echo $_SESSION['username']?></a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
-            <li><a class="dropdown-item" href="gestio/index.php">Gestio</a></li>
-            <li><a class="dropdown-item" href="logout.php">Tancar Sessio</a></li>
+            <li><a class="dropdown-item" href="/perfil.php">Perfil</a></li>
+            <li><a class="dropdown-item" href="/gestio/index.php">Gestio</a></li>
+            <li><a class="dropdown-item" href="/logout.php">Tancar Sessio</a></li>
           </ul>
         </li>
       <li>
         <button type="button" class="btn btn-default btn-sm" onclick="window.location.href='cistella/clases/carrito.php'">
-          <img src="img/carrito.png">
+          <img src="/img/carrito.png">
         </button>
       </li>
       </ul>
@@ -222,8 +221,8 @@ if ($_SESSION['rol']==3 ) :?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle "  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Entrades      </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="Entrades/parc/entrades1.php">Parc</a></li>
-          <li><a class="dropdown-item" href="Entrades/hoteliparc/entrades2.php">Parc+Hotel</a></li>
+          <li><a class="dropdown-item" href="/Entrades/parc/entrades1.php">Parc</a></li>
+          <li><a class="dropdown-item" href="/Entrades/hoteliparc/entrades2.php">Parc+Hotel</a></li>
         </ul>
       </li>
 
@@ -245,13 +244,13 @@ if ($_SESSION['rol']==3 ) :?>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="img/mapa_parc.jpg">Mapa</a>
+          <a class="nav-link" href="/img/mapa_parc.jpg">Mapa</a>
         </li>
       <li>
         <a class="nav-link" href="/login.php">Login</a>
       </li>
         <li>
-          <button type="button" class="btn btn-default btn-sm" onclick="window.location.href='cistella/clases/carrito.php'">
+          <button type="button" class="btn btn-default btn-sm" onclick="window.location.href='/cistella/clases/carrito.php'">
             <img src="/img/carrito.png">
           </button>
         </li>
@@ -288,8 +287,8 @@ if ($_SESSION['rol']==3 ) :?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle "  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Entrades      </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="Entrades/parc/entrades1.php">Parc</a></li>
-          <li><a class="dropdown-item" href="Entrades/hoteliparc/entrades2.php">Parc+Hotel</a></li>
+          <li><a class="dropdown-item" href="/Entrades/parc/entrades1.php">Parc</a></li>
+          <li><a class="dropdown-item" href="/Entrades/hoteliparc/entrades2.php">Parc+Hotel</a></li>
         </ul>
       </li>
 
@@ -302,8 +301,8 @@ if ($_SESSION['rol']==3 ) :?>
 <div class="container" style=width:100%>
 <div class="row p-3 mb-2 bg-light text-darke" >
   <div class="col-sm-5 py-5 px-5">
-    <img class="py-3 px-3" src="../img/familiar.jpg" style="width:100%" >
-    <img class="py-3 px-3"src="../img/familiar2.jpg" style="width:100%" >
+    <img class="py-3 px-3" src="/img/familiar.jpg" style="width:100%" >
+    <img class="py-3 px-3"src="/img/familiar2.jpg" style="width:100%" >
   </div>
   <div class="col-sm-7 py-5 px-5">
     <h1>Familiar</h1>
@@ -335,9 +334,9 @@ if ($_SESSION['rol']==3 ) :?>
 <div class="container" style=width:100%>
 <div class="row p-3 mb-2 bg-light text-darke" >
   <div class="col-sm-5 py-5 px-5">
-    <img class="py-3 px-3" src="../img/suite.jpg" style="width:100%" >
-    <img class="py-3 px-3"src="../img/suite2.jpg" style="width:100%" >
-      <img class="py-3 px-3"src="../img/suite 3.jpg" style="width:100%" >
+    <img class="py-3 px-3" src="/img/suite.jpg" style="width:100%" >
+    <img class="py-3 px-3"src="/img/suite2.jpg" style="width:100%" >
+      <img class="py-3 px-3"src="/img/suite 3.jpg" style="width:100%" >
   </div>
   <div class="col-sm-7 py-5 px-5">
     <h1>Suite</h1>
@@ -367,9 +366,9 @@ Exclusiva habitació que es caracteritza pel seu ambient elegant amb acurada dec
 <div class="container" style=width:100%>
 <div class="row p-3 mb-2 bg-light text-darke" >
   <div class="col-sm-5 py-5 px-5">
-    <img class="py-3 px-3" src="../img/deluxe.jpg" style="width:100%" >
-    <img class="py-3 px-3"src="../img/deluxe2.jpg" style="width:100%" >
-    <img class="py-3 px-3"src="../img/deluxe3.jpg" style="width:100%" >
+    <img class="py-3 px-3" src="/img/deluxe.jpg" style="width:100%" >
+    <img class="py-3 px-3"src="/img/deluxe2.jpg" style="width:100%" >
+    <img class="py-3 px-3"src="/img/deluxe3.jpg" style="width:100%" >
   </div>
   <div class="col-sm-7 py-5 px-5">
     <h1>Deluxe</h1>
