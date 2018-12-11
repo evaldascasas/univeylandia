@@ -35,9 +35,9 @@
             <a class="nav-link" href="/img/mapa_parc.jpg">Mapa</a>
           </li>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil/perfil_client.php"><?php echo $_SESSION['username']?></a>
+            <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil.php"><?php echo $_SESSION['username']?></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="perfil/perfil_client.php">Perfil</a></li>
+              <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
               <li><a class="dropdown-item" href="logout.php">Tancar Sessio</a></li>
             </ul>
           </li>
@@ -105,9 +105,9 @@
             <a class="nav-link" href="/img/mapa_parc.jpg">Mapa</a>
           </li>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil/perfil_client.php"><?php echo $_SESSION['username']?></a>
+            <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil.php"><?php echo $_SESSION['username']?></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="perfil/perfil_client.php">Perfil</a></li>
+              <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
               <li><a class="dropdown-item" href="gestio/index.php">Gestio</a></li>
               <li><a class="dropdown-item" href="logout.php">Tancar Sessio</a></li>
             </ul>
@@ -177,9 +177,9 @@
             <a class="nav-link" href="/img/mapa_parc.jpg">Mapa</a>
           </li>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil/perfil_client.php"><?php echo $_SESSION['username']?></a>
+            <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil.php"><?php echo $_SESSION['username']?></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="perfil/perfil_client.php">Perfil</a></li>
+              <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
               <li><a class="dropdown-item" href="gestio/index.php">Gestio</a></li>
               <li><a class="dropdown-item" href="logout.php">Tancar Sessio</a></li>
             </ul>
