@@ -11,12 +11,6 @@ function crearConnexio(){
   $usuari = "super";
   $passwd = "Alumne123";
   $namedb = "univeylandia";
-  */
-
-  $server = "localhost";
-  $usuari = "super";
-  $passwd = "Alumne123";
-  $namedb = "univeylandia";
 
   $connection= new mysqli($server, $usuari, $passwd, $namedb);
 
