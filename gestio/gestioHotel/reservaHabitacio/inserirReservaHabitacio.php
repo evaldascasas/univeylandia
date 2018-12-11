@@ -330,6 +330,37 @@ if($_SESSION['rol'] != 3) {
             <h1 class="h2">Inserir Reserva Habitació</h1>
           </div>
 
+          <!--<form method="post" action="../../../php/habitacioPHP/crearHabitacio.php">-->
+          <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
+            <div class="form-row">
+              <div class="col-md-3 mb-3">
+                <label>Data d'entrada *</label>
+                <input type="date" class="form-control form-control-sm" name="data_entrada" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label>Data sortida *</label>
+                <input type="date" class="form-control form-control-sm" name="data_sortida" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label>Habitacions lliures</label>
+                <input type="text" class="form-control form-control-sm" placeholder="Nº habitació" name="num_hab" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label>Tipus d'habitació *</label>
+                <div class="input-group">
+                  <select class="form-control form-control-sm" name="tipus_hab" required>
+                    <?php
+                      include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeReservaHab.php";
+                      Habitacio::llistarTipusHabitacio();
+                    ?>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Reservar</button>
+            <button class="btn btn-secondary" type="reset">Cancel·lar</button>
+          </form>
+
 
         </main>
       </div>

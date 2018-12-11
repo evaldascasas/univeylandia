@@ -5,6 +5,11 @@ function crearConnexio(){
   $server = "localhost";
   $usuari = "g1gestio";
   $passwd = "g1gestio";
+  $namedb = "univeylandia";*/
+
+  $server = "localhost";
+  $usuari = "super";
+  $passwd = "Alumne123";
   $namedb = "univeylandia";
   */
 
