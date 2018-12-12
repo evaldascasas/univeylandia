@@ -115,7 +115,7 @@ class Empleat {
         $sql2= "INSERT INTO USUARI (id_usuari, nom, cognom1, cognom2, email, password, data_naixement, adreca, ciutat, provincia, codi_postal,
           tipus_document, numero_document, sexe, telefon, id_rol, actiu, id_dades_empleat) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,LAST_INSERT_ID());";
 
-        $stmt2 = $conn->prepare($sql2);
+        $stmt2 = $connection->prepare($sql2);
 
         if($stmt2==false){
           var_dump($stmt2);
