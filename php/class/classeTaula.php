@@ -1,9 +1,8 @@
 <?php
-include_once $_SERVER ['DOCUMENT_ROOT']."/php/connection.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/php/connection.php";
 
 class Taula
 {
-
     //private $idTaula;
     private $numeroCadires;
     private $numTaula;
@@ -108,8 +107,8 @@ class Taula
                 echo '<td style="display:none;">'.$id_taula.'</td>';
                 echo '<td>'.$numero_taula.'</td>';
                 echo '<td>'.$numero_cadires.'</td>';
-                echo '<td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalModificar'.$id_taula.'">Modificar</button>
-                  <button class="btn btn-secondary btn-sm ml-4"data-toggle="modal" data-target="#ModalEliminar'.$id_taula.'">Eliminar</button></td>';
+                echo '<td><button class="btn btn-primary" data-toggle="modal" data-target="#modalModificar'.$id_taula.'">Modificar</button></td>
+                  <td><button class="btn btn-secondary"data-toggle="modal" data-target="#ModalEliminar'.$id_taula.'">Eliminar</button></td>';
                 echo '</tr>';
                 echo '</tbody>';
 

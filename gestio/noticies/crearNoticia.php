@@ -4,9 +4,10 @@ if(!isset($_SESSION['username'])) {
   header("location: login.php");
 }
 if($_SESSION['rol'] != 3) {
-  header('Location: ../../index.php');
+  header('Location: ../../../index.php');
 }
  ?>
+
 <!doctype html>
 <html lang="es">
 
@@ -36,14 +37,13 @@ if($_SESSION['rol'] != 3) {
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
         <a class="nav-link" href="/perfil.php"><span data-feather="user"></span>
-          <?php
-          echo $_SESSION['username'] ?>
+          <?php echo $_SESSION['username']?>
         </a>
       </li>
     </ul>
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="/logout.php"><span data-feather="log-out"></span>
+        <a class="nav-link" href="#"><span data-feather="log-out"></span>
           Tancar sessió
         </a>
       </li>
@@ -74,35 +74,35 @@ if($_SESSION['rol'] != 3) {
                 <a class="nav-link nav-interior" href="../empleat/crearEmpleat.php"><span data-feather="user-plus"></span>Crear Empleat</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="#../empleat/"><span data-feather="file-text"></span>Llistar Empleats</a>
+                <a class="nav-link nav-interior" href="#../empleat/llistarEmpleat.php"><span data-feather="file-text"></span>Llistar Empleats</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="#../empleat/"><span data-feather="edit"></span>Modificar Empleat</a>
+                <a class="nav-link nav-interior" href="#../empleat/modificarEmpleat.php"><span data-feather="edit"></span>Modificar Empleat</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="#../empleat/"><span data-feather="user-minus"></span>Eliminar Empleat</a>
+                <a class="nav-link nav-interior" href="#../empleat/eliminarEmpleat.php"><span data-feather="user-minus"></span>Eliminar Empleat</a>
               </li>
             </ul>
 
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="collapse" aria-expanded="true" href="#submenu1">
+              <a class="nav-link " data-toggle="collapse" aria-expanded="false" href="#submenu1">
                 <span data-feather="users"></span>
                 Gestionar Clients
                 <span data-feather="chevron-right"></span>
               </a>
             </li>
-            <ul class="nav flex-column collapse show" id="submenu1" data-parent="#sidebar">
+            <ul class="nav flex-column collapse" id="submenu1" data-parent="#sidebar">
               <li class="nav-item">
-                <a class="nav-link nav-interior active" href="../client/crearClient.php"><span data-feather="user-plus"></span>Crear Client</a>
+                <a class="nav-link nav-interior" href="../client/crearClient.php"><span data-feather="user-plus"></span>Crear Client</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link nav-interior" href="../client/llistarClients.php"><span data-feather="file-text"></span>Llistar Clients</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="../client/modificarClient.php"><span data-feather="edit"></span>Modificar Client</a>
+                <a class="nav-link nav-interior" href="#"><span data-feather="edit"></span>Modificar Client</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="../client/eliminarClient.php"><span data-feather="user-minus"></span>Eliminar Client</a>
+                <a class="nav-link nav-interior" href="#"><span data-feather="user-minus"></span>Eliminar Client</a>
               </li>
             </ul>
 
@@ -172,7 +172,7 @@ if($_SESSION['rol'] != 3) {
 
               <ul class="nav flex-column collapse" id="sub-submenu3" data-parent="#submenu4">
                   <li class="nav-item">
-                    <a class="nav-link nav-interior2" href="../hotel/reservaHabitacio/inserirReservaHabitacio.php"><span data-feather="star"></span>Inserir Reserva Hab</a>
+                    <a class="nav-link nav-interior2"  href="../hotel/reservaHabitacio/inserirReservaHabitacio.php"><span data-feather="star"></span>Inserir Reserva Hab</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link nav-interior2" href="../hotel/reservaHabitacio/eliminarReservaHabitacio.php"><span data-feather="star"></span>Eliminar Reserva Hab</a>
@@ -207,10 +207,10 @@ if($_SESSION['rol'] != 3) {
                   <a class="nav-link nav-interior2" href="../hotel/restaurant/modificarTaula.php"><span data-feather="star"></span>Modificar Taula</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-interior2" href="../hotel/restaurant/consultarTaula.php"><span data-feather="star"></span>Consultar Taula</a>
+                  <a class="nav-link nav-interior2"  href="../hotel/restaurant/consultarTaula.php"><span data-feather="star"></span>Consultar Taula</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-interior2" href="../hotel/restaurant/llistarTaula.php"><span data-feather="star"></span>Llistar Taula</a>
+                  <a class="nav-link nav-interior2"  href="../hotel/restaurant/llistarTaula.php"><span data-feather="star"></span>Llistar Taula</a>
                 </li>
               </ul>
 
@@ -322,129 +322,66 @@ if($_SESSION['rol'] != 3) {
             </ul>
 
             <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" aria-expanded="false" href="#submenu9">
-              <span data-feather="alert-triangle"></span>
-              Gestionar Noticies
-              <span data-feather="chevron-right"></span>
-            </a>
-          </li>
-          <ul class="nav flex-column collapse" id="submenu9" data-parent="#sidebar">
-            <li class="nav-item">
-              <a class="nav-link nav-interior" href="../noticies/crearNoticia.php"><span data-feather="user-plus"></span>Crear Noticia</a>
+              <a class="nav-link active" data-toggle="collapse" aria-expanded="true" href="#submenu9">
+                <span data-feather="alert-triangle"></span>
+                Gestionar Noticies
+                <span data-feather="chevron-right"></span>
+              </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link nav-interior" href="../noticies/llistarNoticia.php"><span data-feather="file-text"></span>Llistar Noticia</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-interior" href="#"><span data-feather="edit"></span>Modificar Noticia</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-interior" href="#"><span data-feather="user-minus"></span>Eliminar Noticia</a>
-            </li>
+            <ul class="nav flex-column collapse show" id="submenu9" data-parent="#sidebar">
+              <li class="nav-item">
+                <a class="nav-link nav-interior active" href="../noticies/crearNoticia.php"><span data-feather="user-plus"></span>Crear Noticia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-interior" href="../noticies/llistarNoticia.php"><span data-feather="file-text"></span>Llistar Noticia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-interior" href="#"><span data-feather="edit"></span>Modificar Noticia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-interior" href="#"><span data-feather="user-minus"></span>Eliminar Noticia</a>
+              </li>
+            </ul>
+
+
           </ul>
-
-        </ul>
-      </div>
-    </nav>
-
+        </div>
+      </nav>
 
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Crear client</h1>
+          <h1 class="h2">Crear noticia</h1>
         </div>
 
-        <form class="needs-validation" method="post" action="../../php/registrar_client.php">
+        <form class="needs-validation" method="post" action="../../php/registrar_noticia.php">
           <div class="form-row">
             <div class="col-md-3 mb-3">
-              <label for="nom">Nom *</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Nom" name="nom" required>
+              <label for="nom">Titol Noticia *</label>
+              <input type="text" class="form-control form-control-sm" placeholder="Titol noticia" name="titol_noticia" required>
             </div>
             <div class="col-md-3 mb-3">
-              <label for="cognom1">Cognom 1 *</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Cognom 1" name="cognom1" required>
+              <label for="cognom1">Descripcio Noticia *</label>
+              <input type="text" class="form-control form-control-sm" placeholder="Descripcio de la Noticia" name="descripcio_noticia" required>
             </div>
             <div class="col-md-3 mb-3">
-              <label for="cognom2">Cognom 2</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Cognom 2" name="cognom2">
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="tipus_document">Tipus document</label>
-              <div class="input-group">
-                <select class="form-control form-control-sm" name="tipus_document">
-                  <option>DNI</option>
-                  <option>NIE</option>
-                  <option>CIF</option>
-                  <option>Altres</option>
-                </select>
-              </div>
+              <label for="cognom2">Data de la noticia</label>
+              <input type="text" class="form-control form-control-sm" placeholder="Data de la noticia" name="data_noticia">
             </div>
           </div>
-          <div class="form-row">
-            <div class="col-md-3 mb-3">
-              <label for="numero_document">Nº document *</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Número document" name="numero_document" required>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="date">Data de Naixement *</label>
-              <input type="date" class="form-control form-control-sm" placeholder="Data naixement" name="date" required>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="sexe">Sexe</label>
-              <select class="form-control form-control-sm" name="sexe">
-                <option>Home</option>
-                <option>Dona</option>
-              </select>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="tlf">Telèfon de contacte</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Telèfon de contacte" name="telefon">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-3 mb-3">
-              <label for="email">Correu electrònic *</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Email" name="email" required>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="adreca">Adreça *</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Adreça" name="adreca" required>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="ciutat">Ciutat *</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Ciutat" name="ciutat" required>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="provincia">Provincia *</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Provincia" name="provincia" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-6 mb-6">
-              <label for="contrasenya">Contrasenya *</label>
-              <input type="password" class="form-control form-control-sm" name="contrasenya" required>
-
-            </div>
-            <div class="col-md-6 mb-6">
-              <label for="cp">Codic Postal *</label>
-              <input type="text" class="form-control form-control-sm" name="cp" required>
-              <br>
-            </div>
-          </div>
-
           <button class="btn btn-primary" type="submit">Crear</button>
           <button class="btn btn-secondary" type="reset">Cancel·lar</button>
         </form>
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Crear clients de forma massiva</h1>
+          <h1 class="h2">Crear noticies de forma massiva</h1>
         </div>
 
         <form>
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-3 mb-3">
-                <label for="exampleFormControlFile1">Pujar arxiu .CSV amb dades de clients</label>
+                <label for="exampleFormControlFile1">Pujar arxiu .CSV amb dades de noticies</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
               </div>
             </div>

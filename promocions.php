@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
   .fakeimg {
@@ -39,7 +39,7 @@ if ($_SESSION['rol']==1 ) :?>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil.php"><?php echo $_SESSION['username']?></a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+            <li><a class="dropdown-item" href="/perfil.php">Perfil</a></li>
             <li><a class="dropdown-item" href="/logout.php">Tancar Sessio</a></li>
           </ul>
         </li>
@@ -109,9 +109,9 @@ if ($_SESSION['rol']==2 ) :?>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil.php"><?php echo $_SESSION['username']?></a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+            <li><a class="dropdown-item" href="/perfil.php">Perfil</a></li>
             <li><a class="dropdown-item" href="gestio/index.php">Gestio</a></li>
-            <li><a class="dropdown-item" href="logout.php">Tancar Sessio</a></li>
+            <li><a class="dropdown-item" href="/logout.php">Tancar Sessio</a></li>
           </ul>
         </li>
       <li>
@@ -181,9 +181,9 @@ if ($_SESSION['rol']==3 ) :?>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="perfil.php"><?php echo $_SESSION['username']?></a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+            <li><a class="dropdown-item" href="/perfil.php">Perfil</a></li>
             <li><a class="dropdown-item" href="gestio/index.php">Gestio</a></li>
-            <li><a class="dropdown-item" href="logout.php">Tancar Sessio</a></li>
+            <li><a class="dropdown-item" href="/logout.php">Tancar Sessio</a></li>
           </ul>
         </li>
       <li>

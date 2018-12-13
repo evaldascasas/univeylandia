@@ -2,11 +2,13 @@
 session_start();
 if(!isset($_SESSION['username'])) {
   header("location: login.php");
+
 }
 if($_SESSION['rol'] != 3) {
   header('Location: ../../index.php');
 }
  ?>
+
 <!doctype html>
 <html lang="es">
 
@@ -27,7 +29,7 @@ if($_SESSION['rol'] != 3) {
 
 <body>
   <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow justify-content-between">
-    <a class="navbar-brand col-sm-4 col-md-2 mr-0" href="#">Univeylandia - Gestió</a>
+    <a class="navbar-brand col-sm-4 col-md-2 mr-0" href="../index.php">Univeylandia - Gestió</a>
 
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,8 +38,7 @@ if($_SESSION['rol'] != 3) {
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
         <a class="nav-link" href="/perfil.php"><span data-feather="user"></span>
-          <?php
-          echo $_SESSION['username'] ?>
+          <?php echo $_SESSION['username']?>
         </a>
       </li>
     </ul>
@@ -63,46 +64,46 @@ if($_SESSION['rol'] != 3) {
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" aria-expanded="false" href="#submenu0">
+              <a class="nav-link active" data-toggle="collapse" aria-expanded="true" href="#submenu0">
                 <span data-feather="users"></span>
                 Gestionar Empleats
                 <span data-feather="chevron-right"></span>
               </a>
             </li>
-            <ul class="nav flex-column collapse" id="submenu0" data-parent="#sidebar">
+            <ul class="nav flex-column collapse show" id="submenu0" data-parent="#sidebar">
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="../empleat/crearEmpleat.php"><span data-feather="user-plus"></span>Crear Empleat</a>
+                <a class="nav-link nav-interior active" href="crearEmpleat.php"><span data-feather="user-plus"></span>Crear Empleat</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="#../empleat/"><span data-feather="file-text"></span>Llistar Empleats</a>
+                <a class="nav-link nav-interior" href="llistarEmpleat.php"><span data-feather="file-text"></span>Llistar Empleats</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="#../empleat/"><span data-feather="edit"></span>Modificar Empleat</a>
+                <a class="nav-link nav-interior" href="#"><span data-feather="edit"></span>Modificar Empleat</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="#../empleat/"><span data-feather="user-minus"></span>Eliminar Empleat</a>
+                <a class="nav-link nav-interior" href="#"><span data-feather="user-minus"></span>Eliminar Empleat</a>
               </li>
             </ul>
 
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="collapse" aria-expanded="true" href="#submenu1">
+              <a class="nav-link " data-toggle="collapse" aria-expanded="false" href="#submenu1">
                 <span data-feather="users"></span>
                 Gestionar Clients
                 <span data-feather="chevron-right"></span>
               </a>
             </li>
-            <ul class="nav flex-column collapse show" id="submenu1" data-parent="#sidebar">
+            <ul class="nav flex-column collapse" id="submenu1" data-parent="#sidebar">
               <li class="nav-item">
-                <a class="nav-link nav-interior active" href="../client/crearClient.php"><span data-feather="user-plus"></span>Crear Client</a>
+                <a class="nav-link nav-interior" href="../client/crearClient.php"><span data-feather="user-plus"></span>Crear Client</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link nav-interior" href="../client/llistarClients.php"><span data-feather="file-text"></span>Llistar Clients</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="../client/modificarClient.php"><span data-feather="edit"></span>Modificar Client</a>
+                <a class="nav-link nav-interior" href="#"><span data-feather="edit"></span>Modificar Client</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-interior" href="../client/eliminarClient.php"><span data-feather="user-minus"></span>Eliminar Client</a>
+                <a class="nav-link nav-interior" href="#"><span data-feather="user-minus"></span>Eliminar Client</a>
               </li>
             </ul>
 
@@ -172,7 +173,7 @@ if($_SESSION['rol'] != 3) {
 
               <ul class="nav flex-column collapse" id="sub-submenu3" data-parent="#submenu4">
                   <li class="nav-item">
-                    <a class="nav-link nav-interior2" href="../hotel/reservaHabitacio/inserirReservaHabitacio.php"><span data-feather="star"></span>Inserir Reserva Hab</a>
+                    <a class="nav-link nav-interior2"  href="../hotel/reservaHabitacio/inserirReservaHabitacio.php"><span data-feather="star"></span>Inserir Reserva Hab</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link nav-interior2" href="../hotel/reservaHabitacio/eliminarReservaHabitacio.php"><span data-feather="star"></span>Eliminar Reserva Hab</a>
@@ -207,10 +208,10 @@ if($_SESSION['rol'] != 3) {
                   <a class="nav-link nav-interior2" href="../hotel/restaurant/modificarTaula.php"><span data-feather="star"></span>Modificar Taula</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-interior2" href="../hotel/restaurant/consultarTaula.php"><span data-feather="star"></span>Consultar Taula</a>
+                  <a class="nav-link nav-interior2"  href="../hotel/restaurant/consultarTaula.php"><span data-feather="star"></span>Consultar Taula</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-interior2" href="../hotel/restaurant/llistarTaula.php"><span data-feather="star"></span>Llistar Taula</a>
+                  <a class="nav-link nav-interior2"  href="../hotel/restaurant/llistarTaula.php"><span data-feather="star"></span>Llistar Taula</a>
                 </li>
               </ul>
 
@@ -322,39 +323,39 @@ if($_SESSION['rol'] != 3) {
             </ul>
 
             <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" aria-expanded="false" href="#submenu9">
-              <span data-feather="alert-triangle"></span>
-              Gestionar Noticies
-              <span data-feather="chevron-right"></span>
-            </a>
-          </li>
-          <ul class="nav flex-column collapse" id="submenu9" data-parent="#sidebar">
-            <li class="nav-item">
-              <a class="nav-link nav-interior" href="../noticies/crearNoticia.php"><span data-feather="user-plus"></span>Crear Noticia</a>
+              <a class="nav-link" data-toggle="collapse" aria-expanded="false" href="#submenu9">
+                <span data-feather="alert-triangle"></span>
+                Gestionar Noticies
+                <span data-feather="chevron-right"></span>
+              </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link nav-interior" href="../noticies/llistarNoticia.php"><span data-feather="file-text"></span>Llistar Noticia</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-interior" href="#"><span data-feather="edit"></span>Modificar Noticia</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-interior" href="#"><span data-feather="user-minus"></span>Eliminar Noticia</a>
-            </li>
+            <ul class="nav flex-column collapse" id="submenu9" data-parent="#sidebar">
+              <li class="nav-item">
+                <a class="nav-link nav-interior" href="../noticies/crearNoticia.php"><span data-feather="user-plus"></span>Crear Noticia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-interior" href="../noticies/llistarNoticia.php"><span data-feather="file-text"></span>Llistar Noticia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-interior" href="#"><span data-feather="edit"></span>Modificar Noticia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-interior" href="#"><span data-feather="user-minus"></span>Eliminar Noticia</a>
+              </li>
+            </ul>
+
+
           </ul>
-
-        </ul>
-      </div>
-    </nav>
-
+        </div>
+      </nav>
 
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Crear client</h1>
+          <h1 class="h2">Crear Empleat</h1>
         </div>
 
-        <form class="needs-validation" method="post" action="../../php/registrar_client.php">
+        <form class="needs-validation" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
           <div class="form-row">
             <div class="col-md-3 mb-3">
               <label for="nom">Nom *</label>
@@ -371,7 +372,7 @@ if($_SESSION['rol'] != 3) {
             <div class="col-md-3 mb-3">
               <label for="tipus_document">Tipus document</label>
               <div class="input-group">
-                <select class="form-control form-control-sm" name="tipus_document">
+                <select class="form-control form-control-sm" name="tipus_doc">
                   <option>DNI</option>
                   <option>NIE</option>
                   <option>CIF</option>
@@ -383,11 +384,11 @@ if($_SESSION['rol'] != 3) {
           <div class="form-row">
             <div class="col-md-3 mb-3">
               <label for="numero_document">Nº document *</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Número document" name="numero_document" required>
+              <input type="text" class="form-control form-control-sm" placeholder="Número document" name="num_doc" required>
             </div>
             <div class="col-md-3 mb-3">
-              <label for="date">Data de Naixement *</label>
-              <input type="date" class="form-control form-control-sm" placeholder="Data naixement" name="date" required>
+              <label for="date">Data de naixement *</label>
+              <input type="date" class="form-control form-control-sm" placeholder="Data naixement" name="data" required>
             </div>
             <div class="col-md-3 mb-3">
               <label for="sexe">Sexe</label>
@@ -398,13 +399,17 @@ if($_SESSION['rol'] != 3) {
             </div>
             <div class="col-md-3 mb-3">
               <label for="tlf">Telèfon de contacte</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Telèfon de contacte" name="telefon">
+              <input type="text" class="form-control form-control-sm" placeholder="Telèfon de contacte" name="tlf">
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-3 mb-3">
               <label for="email">Correu electrònic *</label>
               <input type="text" class="form-control form-control-sm" placeholder="Email" name="email" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="contrasenya">Contrasenya *</label>
+              <input type="password" class="form-control form-control-sm" name="contrasenya" required>
             </div>
             <div class="col-md-3 mb-3">
               <label for="adreca">Adreça *</label>
@@ -414,37 +419,90 @@ if($_SESSION['rol'] != 3) {
               <label for="ciutat">Ciutat *</label>
               <input type="text" class="form-control form-control-sm" placeholder="Ciutat" name="ciutat" required>
             </div>
+          </div>
+
+          <div class="form-row">
             <div class="col-md-3 mb-3">
               <label for="provincia">Provincia *</label>
               <input type="text" class="form-control form-control-sm" placeholder="Provincia" name="provincia" required>
             </div>
+            <div class="col-md-3 mb-3">
+              <label for="cp">Codi postal *</label>
+              <input type="text" class="form-control form-control-sm" placeholder="Codi postal" name="codi_postal" required>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="css">Codi de seguretat social *</label>
+              <input type="text" class="form-control form-control-sm" placeholder="Codi Seg Social" name="codi_ss" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="cn">Num nomina *</label>
+              <input type="text" class="form-control form-control-sm" placeholder="Num nòmina" name="num_nomina" required>
+            </div>
           </div>
           <div class="form-row">
-            <div class="col-md-6 mb-6">
-              <label for="contrasenya">Contrasenya *</label>
-              <input type="password" class="form-control form-control-sm" name="contrasenya" required>
-
+            <div class="col-md-3 mb-3">
+              <label for="iban">IBAN *</label>
+              <input type="text" class="form-control form-control-sm" placeholder="IBAN" name="iban" required>
             </div>
-            <div class="col-md-6 mb-6">
-              <label for="cp">Codic Postal *</label>
-              <input type="text" class="form-control form-control-sm" name="cp" required>
-              <br>
+            <div class="col-md-3 mb-3">
+              <label for="especialitat">Especialitat *</label>
+              <input type="text" class="form-control form-control-sm" placeholder="Especialitat" name="especialitat" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="carec">Càrrec *</label>
+              <input type="text" class="form-control form-control-sm" placeholder="Càrrec" name="carrec" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="rol">Rol *</label>
+              <select class="form-control form-control-sm" name="rol" required>
+                <option value="2">Treballador</option>
+                <option value="3">Gestor</option>
+              </select>
             </div>
           </div>
-
+            <div class="form-row">
+              <div class="col-md-3 mb-3">
+                <label for="dic">Data inici contracte *</label>
+                <input type="date" class="form-control form-control-sm" name="data_inici" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="dfi">Data fi contracte *</label>
+                <input type="date" class="form-control form-control-sm" name="data_fi" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="dfi">Horari *</label>
+                <select class="form-control form-control-sm" name="horari" required>
+                  <option value="1">Matí</option>
+                  <option value="2">Tarda</option>
+                  <option value="3">Nit</option>
+                </select>
+              </div>
+            </div>
           <button class="btn btn-primary" type="submit">Crear</button>
           <button class="btn btn-secondary" type="reset">Cancel·lar</button>
         </form>
 
+        <?php
+        include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeEmpleat.php";
+        if(isset($_POST['nom'])) {
+          $empleat = new Empleat ($_POST['nom'],$_POST['cognom1'],$_POST['cognom2'],$_POST['tipus_doc'],$_POST['num_doc'],$_POST['data'],
+          $_POST['sexe'],$_POST['tlf'],$_POST['email'],$_POST['adreca'],$_POST['ciutat'],$_POST['provincia'],$_POST['codi_postal'],$_POST['contrasenya'],
+          $_POST['rol'],$_POST['codi_ss'],$_POST['num_nomina'],$_POST['iban'],$_POST['especialitat'],$_POST['carrec'],$_POST['data_inici'],$_POST['data_fi'],$_POST['horari']);
+
+          $empleat->crearEmpleat();
+        }
+         ?>
+
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Crear clients de forma massiva</h1>
+          <h1 class="h2">Crear empleats de forma massiva</h1>
         </div>
 
         <form>
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-3 mb-3">
-                <label for="exampleFormControlFile1">Pujar arxiu .CSV amb dades de clients</label>
+                <label for="exampleFormControlFile1">Pujar arxiu .CSV amb dades d'empleats</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
               </div>
             </div>
