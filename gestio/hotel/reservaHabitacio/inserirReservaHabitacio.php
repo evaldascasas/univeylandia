@@ -341,7 +341,6 @@ if($_SESSION['rol'] != 3) {
                 </li>
               </ul>
 
-
             </ul>
           </div>
         </nav>
@@ -352,7 +351,7 @@ if($_SESSION['rol'] != 3) {
             <h1 class="h2">Inserir Reserva Habitació</h1>
           </div>
 
-          <!--<form method="post" action="../../../php/habitacioPHP/crearHabitacio.php">-->
+          <!--<form method="post" action="/php/reservaHabPHP/llistarReservaHabitacio.php">-->
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
             <div class="form-row">
               <div class="col-md-3 mb-3">
@@ -368,7 +367,6 @@ if($_SESSION['rol'] != 3) {
                 <div class="input-group">
                   <select class="form-control form-control-sm" name="tipus_hab" required>
                     <?php
-                      include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeReservaHab.php";
                       include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
                       Habitacio::llistarTipusHabitacio();
                     ?>
@@ -379,8 +377,12 @@ if($_SESSION['rol'] != 3) {
             <button class="btn btn-primary" type="submit">Consultar</button>
             <button class="btn btn-secondary" type="reset">Cancel·lar</button>
           </form>
-
-
+          <?php
+          if(isset($_POST['data_entrada'],$_POST['data_sortida'],$_POST['tipus_hab'])){
+            include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeReservaHabitacio.php";
+            ReservaHabitacio::comprovarReserves($_POST['data_entrada'],$_POST['data_sortida'],$_POST['tipus_hab']);
+          }  
+          ?>
         </main>
       </div>
     </div>

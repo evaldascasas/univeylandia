@@ -254,7 +254,7 @@ class Habitacio
 
         if ($result->num_rows > 0) {
             echo '<div class="table-responsive">';
-            echo '<table class="table table-bordered table-sm">';
+            echo '<table class="table table-bordered table-hover table-sm">';
             echo '<thead class="thead-light">';
             echo '<tr>';
             //echo '<th>ID</th>';

@@ -358,7 +358,7 @@ if($_SESSION['rol'] != 3) {
           <div class="form-row">
             <div class="col-md-3 mb-3">
               <label>Número d'habitació *</label>
-              <input type="text" class="form-control form-control-sm" placeholder="Nº habitació" name="num_hab" required>
+              <input type="number" class="form-control form-control-sm" placeholder="Nº habitació" name="num_hab" required>
             </div>
             <div class="col-md-3 mb-3">
               <label>Tipus d'habitació *</label>
