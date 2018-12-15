@@ -349,7 +349,7 @@ if($_SESSION['rol'] != 3) {
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Llistar Reserves Habitacions</h1>
+            <h1 class="h2">Administrar Reserves Habitacions</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">
@@ -360,7 +360,35 @@ if($_SESSION['rol'] != 3) {
             </div>
           </div>
 
+          <?php
+            include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeReservaHabitacio.php";
 
+            echo '<form method="post" style="margin-top=50px;">';
+            echo '  <div class="form-row">';
+            echo '    <div class="col-10">';
+            echo '      <input class="form-control" type="text" name="busqueda_reserva" placeholder="Filtrar...">';
+            echo '    </div>';
+            echo '    <div class="form-group row">';
+            echo '      <div class="offset-sm-2 col-sm-10">';
+            echo '        <input type="submit" class="btn btn-primary" name="buscar_reserva" value="Filtrar">';
+            echo '      </div>';
+            echo '    </div>';
+            echo '  </div>';
+            echo '</form>';
+
+            if (isset($_POST['buscar_reserva'])) {
+              ReservaHabitacio::llistarReservaHabitacioBusqueda();
+            } else {
+              ReservaHabitacio::llistarReservaHabitacio();
+            }
+            if (isset($_POST['modificar'])) {
+              ReservaHabitacio::modificarReservaHabitacio();
+            }
+            if (isset($_POST['eliminar'])){
+              ReservaHabitacio::eliminarReservaHabitacio();
+            }
+
+           ?>
         </main>
       </div>
     </div>

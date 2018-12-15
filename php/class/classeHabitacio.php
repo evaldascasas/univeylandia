@@ -110,7 +110,7 @@ class Habitacio
             die("Connexió fallida: " . $conn->connect_error);
         }
 
-        $sql = "SELECT HABITACIO.id_habitacio, HABITACIO.num_habitacio, HABITACIO.id_tipus_habitacio, TIPUS_HABITACIO.nom_tipus_habitacio FROM HABITACIO, TIPUS_HABITACIO WHERE HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio GROUP BY HABITACIO.id_habitacio";
+        $sql = "SELECT HABITACIO.id_habitacio, HABITACIO.num_habitacio, HABITACIO.id_tipus_habitacio, TIPUS_HABITACIO.nom_tipus_habitacio FROM HABITACIO, TIPUS_HABITACIO WHERE HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio GROUP BY HABITACIO.num_habitacio";
 
         $result = $conn->query($sql);
 
@@ -244,7 +244,7 @@ class Habitacio
         $filtre = $_POST['busqueda_habitacio'];
 
         $sql = "SELECT HABITACIO.id_habitacio, HABITACIO.num_habitacio, HABITACIO.id_tipus_habitacio, TIPUS_HABITACIO.nom_tipus_habitacio FROM HABITACIO, TIPUS_HABITACIO
-        WHERE HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio AND (HABITACIO.num_habitacio LIKE '%$filtre%' OR TIPUS_HABITACIO.nom_tipus_habitacio LIKE '%$filtre%') GROUP BY HABITACIO.id_habitacio";
+        WHERE HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio AND (HABITACIO.num_habitacio LIKE '%$filtre%' OR TIPUS_HABITACIO.nom_tipus_habitacio LIKE '%$filtre%') GROUP BY HABITACIO.num_habitacio";
 
         $result = $conn->query($sql);
 
@@ -367,7 +367,7 @@ class Habitacio
     }
 
     /* Mètode modificarHabitacio --> agafa el ID del modal i modifica el registre de la BD amb aquest ID */
-    public function modificarHabitacio()
+    public static function modificarHabitacio()
     {
         $conn = crearConnexio();
 
@@ -440,9 +440,6 @@ class Habitacio
         $conn->close();
     }
 
-    /**
-    *
-    */
     public static function llistarTipusHabitacioModificar($id_tipus_hab)
     {
       $conn = crearConnexio();
@@ -474,4 +471,64 @@ class Habitacio
 
       $conn->close();
     }
+
+    public static function llistarPensio()
+    {
+        $conn = crearConnexio();
+
+        if ($conn->connect_errno) {
+            die('Error en la connexió : '.$conn->connect_errno.'-'.$conn->connect_error);
+        }
+
+        $sql = "SELECT * FROM PENSIO";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $id_pensio = $row['id_pensio'];
+                $tipus_pensio = $row['tipus_pensio'];
+                $preu_persona = $row['preu_persona'];
+                echo '<option value="'.$id_pensio.'">'.$tipus_pensio.' '.$preu_persona.' €</option>';
+            }
+        } else {
+            echo 'Error: 0 resultats';
+        }
+
+        $conn->close();
+    }
+
+    public static function llistarPensioSeleccionat($id_pensio_seleccionat)
+    {
+      $conn = crearConnexio();
+
+      if ($conn->connect_error) {
+          die('Error en la connexió : '.$conn->connect_errno.'-'.$conn->connect_error);
+      }
+
+      $sql = "SELECT * FROM PENSIO";
+
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+            $id_pensio = $row['id_pensio'];
+            $tipus_pensio = $row['tipus_pensio'];
+            $preu_persona = $row['preu_persona'];
+
+            if($id_pensio_seleccionat==$id_pensio) {
+              echo '<option selected value="'.$id_pensio.'">'.$tipus_pensio.'</option>';
+            }
+            else {
+              echo '<option value="'.$id_pensio.'">'.$tipus_pensio.'</option>';
+            }
+
+          }
+      } else {
+          echo "Error: 0 resultats";
+      }
+
+      $conn->close();
+    }
+
 }

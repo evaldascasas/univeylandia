@@ -354,13 +354,13 @@ if($_SESSION['rol'] != 3) {
           <!--<form method="post" action="/php/reservaHabPHP/llistarReservaHabitacio.php">-->
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
             <div class="form-row">
-              <div class="col-md-3 mb-3">
+              <div class="col-md-2 mb-3">
                 <label>Data d'entrada *</label>
-                <input type="date" class="form-control form-control-sm" name="data_entrada" required>
+                <input type="date" class="form-control form-control-sm" name="data_entrada" min="<?php echo date('Y-m-d'); ?>" required>
               </div>
-              <div class="col-md-3 mb-3">
+              <div class="col-md-2 mb-3">
                 <label>Data sortida *</label>
-                <input type="date" class="form-control form-control-sm" name="data_sortida" required>
+                <input type="date" class="form-control form-control-sm" name="data_sortida" min="<?php echo date('Y-m-d', strtotime(' + 1 days')); ?>" required>
               </div>
               <div class="col-md-3 mb-3">
                 <label>Tipus d'habitació *</label>
@@ -373,15 +373,37 @@ if($_SESSION['rol'] != 3) {
                   </select>
                 </div>
               </div>
+              <div class="col-md-3 mb-3">
+                <label>Tipus pensió *</label>
+                <div class="input-group">
+                  <select class="form-control form-control-sm" name="tipus_pensio" required>
+                    <?php
+                      include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
+                      Habitacio::llistarPensio();
+                    ?>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2 mb-3">
+                <label>Nº persones (1-4) *</label>
+                <div class="input-group">
+                  <input type="number" class="form-control form-control-sm" name="num_persones" min="1" max="4" required>
+                </div>
+              </div>
             </div>
             <button class="btn btn-primary" type="submit">Consultar</button>
             <button class="btn btn-secondary" type="reset">Cancel·lar</button>
           </form>
           <?php
+          include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeReservaHabitacio.php";
           if(isset($_POST['data_entrada'],$_POST['data_sortida'],$_POST['tipus_hab'])){
-            include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeReservaHabitacio.php";
-            ReservaHabitacio::comprovarReserves($_POST['data_entrada'],$_POST['data_sortida'],$_POST['tipus_hab']);
-          }  
+            ReservaHabitacio::llistarHabitacionsLliures($_POST['data_entrada'],$_POST['data_sortida'],$_POST['tipus_hab'],$_POST['tipus_pensio'],$_POST['num_persones']);
+          }
+          if (isset($_POST['reservar'])) {
+            $reserva = new ReservaHabitacio($_POST['id_hab_res'],9999,$_POST['nom_res'],$_POST['cognoms_res'],$_POST['dni_res'],$_POST['tlf_res'],$_POST['num_persones_res'],
+            $_POST['data_entrada_res'],$_POST['data_sortida_res'],$_POST['tipus_pensio_res'],$_POST['preu_reserva']);
+            $reserva->crearReserva();
+          }
           ?>
         </main>
       </div>
