@@ -376,6 +376,7 @@ if($_SESSION['rol'] != 3) {
           <button class="btn btn-secondary" type="reset">Cancel·lar</button>
         </form>
 
+        <div class="py-3">
         <?php
           include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
           if(isset($_POST['num_hab'])) {
@@ -385,6 +386,7 @@ if($_SESSION['rol'] != 3) {
           }
 
          ?>
+       </div>
 
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

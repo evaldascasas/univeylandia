@@ -363,6 +363,7 @@ if($_SESSION['rol'] != 3) {
             </div>
           </div>
 
+          <div class="py-3">
             <?php
               include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
 
@@ -392,11 +393,10 @@ if($_SESSION['rol'] != 3) {
               }
 
              ?>
+           </div>
            <!--</table>
           </div>-->
         </main>
-
-
       </div>
     </div>
 

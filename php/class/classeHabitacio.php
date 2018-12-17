@@ -171,7 +171,7 @@ class Habitacio
                 echo '                <label for="tipus_habitacio">Tipus Habitació</label>';
                 echo '                <div class="input-group">';
                 echo '                  <select class="form-control form-control-sm" name="tipus_hab_mod" required>';
-                include_once $_SERVER['DOCUMENT_ROOT']."/php/classes/classeHabitacio.php";
+                include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
                 Habitacio::llistarTipusHabitacioModificar($id_tipus_hab);
                 echo '                  </select>';
                 echo '                </div>';
@@ -222,7 +222,9 @@ class Habitacio
             echo '</div>';
 
         } else {
-            echo "0 resultats";
+          echo '<div class="alert alert-warning">
+                  <strong>Atenció!</strong> 0 resultats.
+                </div>';
         }
         $conn->close();
       }
@@ -305,7 +307,7 @@ class Habitacio
                 echo '                <label for="tipus_habitacio">Tipus Habitació</label>';
                 echo '                <div class="input-group">';
                 echo '                  <select class="form-control form-control-sm" name="tipus_hab_mod" required>';
-                include_once $_SERVER['DOCUMENT_ROOT']."/php/classes/classeHabitacio.php";
+                include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
                 Habitacio::llistarTipusHabitacioModificar($id_tipus_hab);
                 echo '                  </select>';
                 echo '                </div>';
@@ -356,7 +358,9 @@ class Habitacio
             echo '</div>';
 
         } else {
-            echo "0 resultats";
+          echo '<div class="alert alert-warning">
+                  <strong>Atenció!</strong> 0 resultats.
+                </div>';
         }
         $conn->close();
       }
@@ -381,7 +385,7 @@ class Habitacio
 
         $sql = "UPDATE HABITACIO SET id_tipus_habitacio=$tipus_hab_mod WHERE id_habitacio=$id_hab_mod";
 
-        if (mysqli_query($conn, $sql)) {
+        if ($conn->query($sql)) {
             echo '<script>window.location.href = window.location.href + "?refresh";</script>';
         } else {
             echo '<script>alert("Error!");</script>';
@@ -404,7 +408,7 @@ class Habitacio
 
         $sql = "DELETE FROM HABITACIO WHERE id_habitacio =$id_hab_del";
 
-        if (mysqli_query($conn, $sql)) {
+        if ($conn->query($sql)) {
             echo '<script>window.location.href = window.location.href + "?refresh";</script>';
         } else {
             echo '<script>alert("Error!");</script>';
@@ -434,7 +438,9 @@ class Habitacio
                 echo '<option value="'.$id_tipus_hab.'">'.$nom_tipus_hab.'</option>';
             }
         } else {
-            echo "0 resultats";
+          echo '<div class="alert alert-warning">
+                  <strong>Atenció!</strong> 0 resultats.
+                </div>';
         }
 
         $conn->close();
@@ -466,7 +472,9 @@ class Habitacio
 
           }
       } else {
-          echo "0 resultats";
+        echo '<div class="alert alert-warning">
+                <strong>Atenció!</strong> 0 resultats.
+              </div>';
       }
 
       $conn->close();
@@ -492,7 +500,9 @@ class Habitacio
                 echo '<option value="'.$id_pensio.'">'.$tipus_pensio.' '.$preu_persona.' €</option>';
             }
         } else {
-            echo 'Error: 0 resultats';
+          echo '<div class="alert alert-warning">
+                  <strong>Atenció!</strong> 0 resultats.
+                </div>';
         }
 
         $conn->close();
@@ -525,7 +535,9 @@ class Habitacio
 
           }
       } else {
-          echo "Error: 0 resultats";
+        echo '<div class="alert alert-warning">
+                <strong>Atenció!</strong> 0 resultats.
+              </div>';
       }
 
       $conn->close();
@@ -533,7 +545,7 @@ class Habitacio
 
     public static function llistatHabitacionsPDF()
     {
-      require_once $_SERVER['DOCUMENT_ROOT']."/pdf/fpdf.php";
+      require_once $_SERVER['DOCUMENT_ROOT']."/php/fpdf/fpdf.php";
 
       $conn = crearConnexio();
 
@@ -591,7 +603,7 @@ class Habitacio
       $pdf->Cell(30,6,'PREU (euros)',1,0,'R',1);
       $pdf->Ln();
 
-      //Now show the 3 columns
+      //Now show the columns
       $pdf->SetFont('Arial','',12);
       $pdf->SetY($Y_Table_Position);
       $pdf->SetX(45);

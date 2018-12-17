@@ -128,24 +128,76 @@ class ReservaHabitacio
                 HABITACIO.id_habitacio = RESERVA_HABITACIO.id_habitacio) AND (HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio AND HABITACIO.id_tipus_habitacio = $idTipusHabitacio)";
                 */
 
-                $sql = "SELECT HABITACIO.id_habitacio, HABITACIO.num_habitacio, TIPUS_HABITACIO.nom_tipus_habitacio, TIPUS_HABITACIO.preu_tipus_habitacio FROM HABITACIO, TIPUS_HABITACIO
+                $sql = "SELECT HABITACIO.id_habitacio, HABITACIO.num_habitacio, TIPUS_HABITACIO.nom_tipus_habitacio, TIPUS_HABITACIO.preu_tipus_habitacio
+                FROM HABITACIO, TIPUS_HABITACIO
                   WHERE (HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio) AND HABITACIO.id_habitacio NOT IN
                     (SELECT id_habitacio FROM RESERVA_HABITACIO WHERE
                     (
-                    	($data_Entrada BETWEEN data_entrada AND date_sub(data_sortida, INTERVAL +1 day))
+                    	('$data_Entrada' BETWEEN data_entrada AND date_sub(data_sortida, INTERVAL +1 day))
                     	OR
-                    	($data_Sortida BETWEEN date_sub(data_entrada, INTERVAL -1 day) AND data_sortida)
+                    	('$data_Sortida' BETWEEN date_sub(data_entrada, INTERVAL -1 day) AND data_sortida)
                     	OR
-                    	(data_entrada <= $data_Entrada AND data_sortida >= $data_Sortida)
+                    	(data_entrada <= '$data_Entrada' AND data_sortida >= '$data_Sortida')
                     	OR
-                    	(data_entrada >= $data_Entrada AND data_sortida <= $data_Sortida)
+                    	(data_entrada >= '$data_Entrada' AND data_sortida <= '$data_Sortida')
                     ) ORDER BY id_reserva_habitacio
                     )
-                    AND ( HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio AND HABITACIO.id_tipus_habitacio = $idTipusHabitacio )
+                    AND ( HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio AND HABITACIO.id_tipus_habitacio = '$idTipusHabitacio' )
                     ORDER BY HABITACIO.num_habitacio";
-
+/*
+                    $sql = "SELECT HABITACIO.id_habitacio, HABITACIO.num_habitacio, TIPUS_HABITACIO.nom_tipus_habitacio, TIPUS_HABITACIO.preu_tipus_habitacio
+                    FROM HABITACIO, TIPUS_HABITACIO
+                      WHERE (HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio) AND HABITACIO.id_habitacio NOT IN
+                        (SELECT id_habitacio FROM RESERVA_HABITACIO WHERE
+                        (
+                          (? BETWEEN data_entrada AND date_sub(data_sortida, INTERVAL +1 day))
+                          OR
+                          (? BETWEEN date_sub(data_entrada, INTERVAL -1 day) AND data_sortida)
+                          OR
+                          (data_entrada <= ? AND data_sortida >= ?)
+                          OR
+                          (data_entrada >= ? AND data_sortida <= ?)
+                        ) ORDER BY id_reserva_habitacio
+                        )
+                        AND ( HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio AND HABITACIO.id_tipus_habitacio = ? )
+                        ORDER BY HABITACIO.num_habitacio";
+*/
                 $result = $conn->query($sql);
+                /*$stmt = $conn->prepare($sql);
 
+                if ($stmt==false) {
+                    //var_dump($stmt);
+                    die("Secured: Error 1");
+                    throw new Exception();
+                }
+
+                $resultBP = $stmt->bind_param(
+                "ssssssi",
+                $data_Entrada,
+                $data_Sortida,
+                $data_Entrada,
+                $data_Sortida,
+                $data_Entrada,
+                $data_Sortida,
+                $idTipusHabitacio
+                );
+
+                if ($resultBP==false) {
+                    //var_dump($stmt);
+                    die("Secured2: Error 2");
+                    throw new Exception();
+                }
+
+                $resultEx = $stmt->execute();
+                $resultStmt = $stmt->get_result();
+
+                if ($resultEx==false) {
+                    //var_dump($stmt);
+                    die("Secured3: 3");
+                    throw new Exception();
+                }*/
+
+                //if ($resultStmt->num_rows > 0) {
                 if ($result->num_rows > 0) {
                     /* Consulta per treure el preu del tipus de pensio seleccionat */
                     $sql2 = "SELECT * FROM PENSIO WHERE id_pensio = $id_pensio_seleccionat";
@@ -171,6 +223,7 @@ class ReservaHabitacio
                     echo '</tr>';
                     echo '</thead>';
 
+                    //while ($row = $resultStmt->fetch_assoc()) {
                     while ($row = $result->fetch_assoc()) {
                         $id_hab = $row['id_habitacio'];
                         $num_hab = $row['num_habitacio'];
@@ -216,7 +269,7 @@ class ReservaHabitacio
                         echo '                <label for="tipus_pensio">Tipus Habitació</label>';
                         echo '                <div class="input-group">';
                         echo '                  <select readonly class="form-control" name="tipus_hab_res" required>';
-                        include_once $_SERVER['DOCUMENT_ROOT']."/php/classes/classeHabitacio.php";
+                        include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
                         Habitacio::llistarTipusHabitacioModificar($_POST['tipus_hab']);
                         echo '                  </select>';
                         echo '                </div>';
@@ -233,7 +286,7 @@ class ReservaHabitacio
                         echo '                <label for="tipus_pensio">Tipus Pensió</label>';
                         echo '                <div class="input-group">';
                         echo '                  <select readonly class="form-control" name="tipus_pensio_res" required>';
-                        include_once $_SERVER['DOCUMENT_ROOT']."/php/classes/classeHabitacio.php";
+                        include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
                         Habitacio::llistarPensioSeleccionat($_POST['tipus_pensio']);
                         echo '                  </select>';
                         echo '                </div>';
@@ -274,8 +327,12 @@ class ReservaHabitacio
                         echo '</div>';
                     }
                 } else {
-                    echo "0 resultats";
+                    echo '<div class="alert alert-warning">
+                            <strong>Atenció!</strong> No hi ha habitacions lliures.
+                          </div>';
                 }
+                //$stmt->close();
+
                 $conn->close();
             }
         } catch (Exception $e) {
@@ -329,7 +386,7 @@ class ReservaHabitacio
                     $num_hab = $row['num_habitacio'];
                     $idTipusHabitacio = $row['id_tipus_habitacio'];
                     $tipusHabitacio = $row['nom_tipus_habitacio'];
-                    //$idPensio = $row['id_pensio'];
+                    $idPensio = $row['id_pensio'];
                     $tipusPensio = $row['tipus_pensio'];
                     $nomClient = $row['nom'];
                     $cognomsClient = $row['cognom'];
@@ -418,8 +475,8 @@ class ReservaHabitacio
                     echo '                <label for="tipus_pensio">Tipus Habitació</label>';
                     echo '                <div class="input-group">';
                     echo '                  <select disabled class="form-control" name="tipus_hab_res_mod">';
-                    include_once $_SERVER['DOCUMENT_ROOT']."/php/classes/classeHabitacio.php";
-                    //Habitacio::llistarTipusHabitacioModificar($idTipusHabitacio);
+                    include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
+                    Habitacio::llistarTipusHabitacioModificar($idTipusHabitacio);
                     echo '                  </select>';
                     echo '                </div>';
                     echo '              </div>';
@@ -435,8 +492,8 @@ class ReservaHabitacio
                     echo '                <label for="tipus_pensio">Tipus Pensió</label>';
                     echo '                <div class="input-group">';
                     echo '                  <select disabled class="form-control" name="tipus_pensio_mod">';
-                    include_once $_SERVER['DOCUMENT_ROOT']."/php/classes/classeHabitacio.php";
-                    //Habitacio::llistarPensioSeleccionat($row['id_pensio']);
+                    include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
+                    Habitacio::llistarPensioSeleccionat($idPensio);
                     echo '                  </select>';
                     echo '                </div>';
                     echo '              </div>';
@@ -509,7 +566,9 @@ class ReservaHabitacio
                 echo '</table>';
                 echo '</div>';
             } else {
-                echo "0 resultats";
+              echo '<div class="alert alert-warning">
+                      <strong>Atenció!</strong> 0 resultats.
+                    </div>';
             }
             $conn->close();
         } catch (Exception $e) {
@@ -624,8 +683,8 @@ class ReservaHabitacio
                     echo '                <label for="tipus_pensio">Tipus Habitació</label>';
                     echo '                <div class="input-group">';
                     echo '                  <select disabled class="form-control" name="tipus_hab_res_mod">';
-                    include_once $_SERVER['DOCUMENT_ROOT']."/php/classes/classeHabitacio.php";
-                    //Habitacio::llistarTipusHabitacioModificar($idTipusHabitacio);
+                    include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
+                    Habitacio::llistarTipusHabitacioModificar($idTipusHabitacio);
                     echo '                  </select>';
                     echo '                </div>';
                     echo '              </div>';
@@ -641,8 +700,8 @@ class ReservaHabitacio
                     echo '                <label for="tipus_pensio">Tipus Pensió</label>';
                     echo '                <div class="input-group">';
                     echo '                  <select disabled class="form-control" name="tipus_pensio_mod">';
-                    include_once $_SERVER['DOCUMENT_ROOT']."/php/classes/classeHabitacio.php";
-                    //Habitacio::llistarPensioSeleccionat($row['id_pensio']);
+                    include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeHabitacio.php";
+                    Habitacio::llistarPensioSeleccionat($idPensio);
                     echo '                  </select>';
                     echo '                </div>';
                     echo '              </div>';
@@ -715,7 +774,9 @@ class ReservaHabitacio
                 echo '</table>';
                 echo '</div>';
             } else {
-                echo "0 resultats";
+              echo '<div class="alert alert-warning">
+                      <strong>Atenció!</strong> 0 resultats.
+                    </div>';
             }
             $conn->close();
         } catch (Exception $e) {
@@ -745,17 +806,60 @@ class ReservaHabitacio
         $dni_res_mod = $_POST['dni_res_mod'];
         $tlf_res_mod = $_POST['tlf_res_mod'];
 
-        $sql = "UPDATE RESERVA_HABITACIO SET nom=$nom_res_mod, cognom=$cognoms_res_mod, document=$dni_res_mod, telefon=$tlf_res_mod WHERE id_reserva_habitacio =$id_reserva_hab_mod";
+        //$sql = "UPDATE RESERVA_HABITACIO SET nom=?, cognom=?, document=?, telefon=? WHERE id_reserva_habitacio =?";
 
-        if (mysqli_query($conn, $sql)) {
+        $sql = "UPDATE RESERVA_HABITACIO SET nom='$nom_res_mod', cognom='$cognoms_res_mod', document='$dni_res_mod', telefon='$tlf_res_mod' WHERE id_reserva_habitacio =$id_reserva_hab_mod";
+
+        if ($conn->query($sql)) {
             echo '<script>window.location.href = window.location.href + "?refresh";</script>';
         } else {
-            //echo '<script>alert("Error!");</script>';
-            echo 'Error';
+            echo '<script>alert("Error!");</script>';
+            //echo "Error updating record: " . mysqli_error($conn);
         }
         $conn->close();
-    }
+/*
+        $stmt = $conn->prepare($sql);
 
+        if ($stmt==false) {
+            //var_dump($stmt);
+            die("Secured: Error al modificar el registre.");
+            throw new Exception();
+        }
+
+        $resultBP = $stmt->bind_param(
+        "ssssi",
+        $nom_res_mod,
+        $cognoms_res_mod,
+        $dni_res_mod,
+        $tlf_res_mod,
+        $id_reserva_hab_mod
+        );
+
+        if ($resultBP==false) {
+            //var_dump($stmt);
+            die("Secured2: Error al modificar el registre.");
+            throw new Exception();
+        }
+
+        $resultEx = $stmt->execute();
+
+        if ($resultEx==false) {
+            //var_dump($stmt);
+            die("Secured3: Error al modificar el registre.");
+            throw new Exception();
+        }
+
+        if($resultEx==true) {
+          echo '<script>window.location.href = window.location.href + "?refresh";</script>';
+        }
+        else {
+            echo '<script>alert("Error!");</script>';
+            //echo 'Error';
+        }
+        $stmt->close();
+        $conn->close();
+*/
+    }
 
     public static function eliminarReservaHabitacio()
     {
@@ -769,7 +873,7 @@ class ReservaHabitacio
 
         $sql = "DELETE FROM RESERVA_HABITACIO WHERE id_reserva_habitacio =$id_reserva_hab_del";
 
-        if (mysqli_query($conn, $sql)) {
+        if ($conn->query($sql)) {
             echo '<script>window.location.href = window.location.href + "?refresh";</script>';
         } else {
             echo '<script>alert("Error!");</script>';

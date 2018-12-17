@@ -394,6 +394,8 @@ if($_SESSION['rol'] != 3) {
             <button class="btn btn-primary" type="submit">Consultar</button>
             <button class="btn btn-secondary" type="reset">Cancel·lar</button>
           </form>
+
+          <div class="py-3">
           <?php
           include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeReservaHabitacio.php";
           if(isset($_POST['data_entrada'],$_POST['data_sortida'],$_POST['tipus_hab'])){
@@ -405,6 +407,7 @@ if($_SESSION['rol'] != 3) {
             $reserva->crearReserva();
           }
           ?>
+        </div>
         </main>
       </div>
     </div>
