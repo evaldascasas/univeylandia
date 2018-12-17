@@ -745,7 +745,7 @@ class ReservaHabitacio
         $dni_res_mod = $_POST['dni_res_mod'];
         $tlf_res_mod = $_POST['tlf_res_mod'];
 
-        $sql = "UPDATE RESERVA_HABITACIO SET nom=$nom_res_mod, cognom=$cognoms_res_mod, document=$dni_res_mod, telefon=$tlf_res_mod WHERE id_reserva_habitacio=$id_reserva_hab_mod";
+        $sql = "UPDATE RESERVA_HABITACIO SET nom=$nom_res_mod, cognom=$cognoms_res_mod, document=$dni_res_mod, telefon=$tlf_res_mod WHERE id_reserva_habitacio =$id_reserva_hab_mod";
 
         if (mysqli_query($conn, $sql)) {
             echo '<script>window.location.href = window.location.href + "?refresh";</script>';

@@ -352,10 +352,13 @@ if($_SESSION['rol'] != 3) {
             <h1 class="h2">Administrar Habitacions</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
-                <button class="btn btn-sm btn-outline-secondary">
-                  <span data-feather="save"></span>
-                  Exportar
-                </button>
+                <!--<form method="post" action="<?php //echo htmlentities($_SERVER['PHP_SELF']); ?>">-->
+                <form method="post" action="/php/habitacioPHP/habitacionsPDF.php">
+                  <button class="btn btn-sm btn-outline-secondary" name="Exportar">
+                    <span data-feather="save"></span>
+                    Exportar
+                  </button>
+                </form>
               </div>
             </div>
           </div>
