@@ -223,7 +223,7 @@ class Habitacio
 
         } else {
           echo '<div class="alert alert-warning">
-                  <strong>Atenció!</strong> 0 resultats.
+                  <strong>Atenció!</strong> No hi ha registres.
                 </div>';
         }
         $conn->close();
@@ -359,7 +359,7 @@ class Habitacio
 
         } else {
           echo '<div class="alert alert-warning">
-                  <strong>Atenció!</strong> 0 resultats.
+                  <strong>Atenció!</strong> No hi ha registres.
                 </div>';
         }
         $conn->close();
@@ -439,7 +439,7 @@ class Habitacio
             }
         } else {
           echo '<div class="alert alert-warning">
-                  <strong>Atenció!</strong> 0 resultats.
+                  <strong>Atenció!</strong> No hi ha registres.
                 </div>';
         }
 
@@ -473,7 +473,7 @@ class Habitacio
           }
       } else {
         echo '<div class="alert alert-warning">
-                <strong>Atenció!</strong> 0 resultats.
+                <strong>Atenció!</strong> No hi ha registres.
               </div>';
       }
 
@@ -501,7 +501,7 @@ class Habitacio
             }
         } else {
           echo '<div class="alert alert-warning">
-                  <strong>Atenció!</strong> 0 resultats.
+                  <strong>Atenció!</strong> No hi ha registres.
                 </div>';
         }
 
@@ -536,7 +536,7 @@ class Habitacio
           }
       } else {
         echo '<div class="alert alert-warning">
-                <strong>Atenció!</strong> 0 resultats.
+                <strong>Atenció!</strong> No hi ha registres.
               </div>';
       }
 
@@ -574,7 +574,9 @@ class Habitacio
             $columna_preu_hab = $columna_preu_hab.$preuMostrar."\n";
           }
       } else {
-          echo "Error: 0 resultats";
+        echo '<div class="alert alert-warning">
+                <strong>Atenció!</strong> No hi ha registres.
+              </div>';
       }
 
       $conn->close();

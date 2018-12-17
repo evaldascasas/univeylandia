@@ -567,7 +567,7 @@ class ReservaHabitacio
                 echo '</div>';
             } else {
               echo '<div class="alert alert-warning">
-                      <strong>Atenció!</strong> 0 resultats.
+                      <strong>Atenció!</strong> No hi ha registres.
                     </div>';
             }
             $conn->close();
@@ -775,7 +775,7 @@ class ReservaHabitacio
                 echo '</div>';
             } else {
               echo '<div class="alert alert-warning">
-                      <strong>Atenció!</strong> 0 resultats.
+                      <strong>Atenció!</strong> No hi ha registres.
                     </div>';
             }
             $conn->close();
