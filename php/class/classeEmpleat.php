@@ -157,7 +157,6 @@ class Empleat {
     $connection = crearConnexio();
 
     $sql = "SELECT id_usuari, id_rol, password, email FROM USUARI WHERE email=? AND id_rol!=1 AND actiu=1";
-      //$sql = "SELECT password FROM USUARI WHERE email=? AND id_rol='1' ";
 
     $stmt = $connection->prepare($sql);
 
@@ -167,10 +166,7 @@ class Empleat {
 
     $result = $stmt->get_result();
 
-      /* now you can fetch the results into an array - NICE */
     while ($row = $result->fetch_assoc()) {
-        // use your $myrow array as you would with any other fetch
-        //var_dump($row['id_usuari'], $row['id_rol'], $row['email']);
         $username = $row['email'];
         $userID = $row['id_usuari'];
         $rol = $row['id_rol'];
@@ -178,7 +174,6 @@ class Empleat {
     }
 
     $isValid = password_verify($this->pass, $hash);
-    //$isValid = true;
 
     if ($isValid)
     {
@@ -201,8 +196,6 @@ class Empleat {
       $_SESSION['id_usuari'] = $userID;
       $_SESSION['username'] = $username;
       $_SESSION['rol'] = $rol;
-
-      //echo $_SESSION['username'], $_SESSION['id_usuari'], $_SESSION['rol'];
 
       return true;
     }

@@ -37,10 +37,10 @@ class Client {
 
   }
 
-  function __construct2($email, $pass)
+  function __construct2($email, $contrasenya)
   {
     $this->email = $email;
-    $this->pass = $pass;
+    $this->contrasenya = $contrasenya;
   }
 
 
@@ -592,7 +592,6 @@ echo '<!-- Modal -->
     $conn = crearConnexio();
 
     $sql = "SELECT id_usuari, id_rol, password, email FROM USUARI WHERE email=? AND id_rol=1 AND actiu=1";
-    //$sql = "SELECT password FROM USUARI WHERE email=? AND id_rol='1' ";
 
     $stmt = $conn->prepare($sql);
 
@@ -602,17 +601,14 @@ echo '<!-- Modal -->
 
     $result = $stmt->get_result();
 
-    /* now you can fetch the results into an array - NICE */
     while ($row = $result->fetch_assoc()) {
-        // use your $myrow array as you would with any other fetch
-        var_dump($row['id_usuari'], $row['id_rol'], $row['email']);
         $username = $row['email'];
         $userID = $row['id_usuari'];
         $rol = $row['id_rol'];
         $hash = $row['password'];
     }
 
-    $isValid = password_verify($this->pass, $hash);
+    $isValid = password_verify($this->contrasenya, $hash);
 
     if ($isValid)
     {
@@ -632,17 +628,14 @@ echo '<!-- Modal -->
           }
       }
 
-      $_SESSION['id_usuari'] = $userID; //$row['id_usuari'];
-      $_SESSION['username'] = $username; //$row['email'];
-      $_SESSION['rol'] = $rol;//$row['id_rol'];
-
-      echo $_SESSION['username'], $_SESSION['id_usuari'], $_SESSION['rol'];
+      $_SESSION['id_usuari'] = $userID;
+      $_SESSION['username'] = $username;
+      $_SESSION['rol'] = $rol;
 
       return true;
     }
     else
     {
-      //echo 'NO VALID';
       return false;
     }
     $conn->close();
