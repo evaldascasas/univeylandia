@@ -61,7 +61,7 @@ function __construct14($nom,$cognom1,$cognom2,$email,$contrasenya,$date,$adreca,
   $this->telefon = $telefon;
   $this->id_rol = 1;
   $this->actiu = 0;
-  $this->hash = md5(rand(0,1000));
+  $this->hash_validacio = md5(rand(0,1000));
 }
 //rip consturctor
 
@@ -207,7 +207,7 @@ function __construct14($nom,$cognom1,$cognom2,$email,$contrasenya,$date,$adreca,
 
       $sentencia->bind_param("sssssssssisssiiis",$this->nom,$this->cognom1,$this->cognom2,$this->email,
       $this->contrasenya,$this->date,$this->adreca,$this->ciutat,$this->provincia,$this->cp,
-      $this->tipus_document,$this->numero_document,$this->sexe,$this->telefon,$this->id_rol,$this->actiu,$this->hash);
+      $this->tipus_document,$this->numero_document,$this->sexe,$this->telefon,$this->id_rol,$this->actiu,$this->hash_validacio);
       //var_dump($this->hash);
       $result = $sentencia->execute();
       var_dump($result);
@@ -240,7 +240,7 @@ function __construct14($nom,$cognom1,$cognom2,$email,$contrasenya,$date,$adreca,
       var_dump($this->email);
       $subject = "Validacio de Univeylandia";
       $message = "Validar el compte
-      http://www.univeylandia-parc.cat/verificar.php?email=$this->email&hash=$this->hash
+      http://www.univeylandia-parc.cat/verificar.php?email=$this->email&hash=$this->hash_validacio
 
 
 

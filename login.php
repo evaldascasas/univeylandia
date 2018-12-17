@@ -39,7 +39,7 @@ if (!empty($_POST)) {
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link href="css/login.css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet">
   </head>
 
   <body class="text-center">
