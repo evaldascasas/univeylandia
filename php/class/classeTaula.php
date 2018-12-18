@@ -1,90 +1,112 @@
 <?php
+/**
+ * classeTaula.php: conté els atributs i mètodes de la classe Taula.
+ */
+/**
+ * include_once de la connexió a la BD.
+ */
 include_once $_SERVER['DOCUMENT_ROOT']."/php/connection.php";
-
+/**
+ * Taula Conte tots els metodes setters i getters i els seus atributs
+ */
 class Taula
 {
-    //private $idTaula;
     private $numeroCadires;
     private $numTaula;
 
+    /**
+     * [__construct metode constructor de dos atributs]
+     * @param [type] $numTaula      [numero de taula]
+     * @param [type] $numeroCadires [numero de cadires]
+     */
     public function __construct($numTaula, $numeroCadires)
     {
         $this->numTaula = $numTaula;
         $this->numeroCadires = $numeroCadires;
     }
 
+    /**
+     * [setNumeroCadires metode setter rebra per parametres el numero de cadires i li assignara valor als atributs del objecte]
+     * @param [type] $numeroCadires [description]
+     */
     public function setNumeroCadires($numeroCadires)
     {
         $this->numeroCadires = $numeroCadires;
     }
 
+    /**
+     * [setNumTaula metode setter que rebra el numero de taula per parametres i li assignara valor als atributs del objecte]
+     * @param [type] $numTaula [description]
+     */
     public function setNumTaula($numTaula)
     {
         $this->numTaula = $numTaula;
     }
 
-    /*function getIdTaula() {
-        return $this->idTaula;
-    }*/
-
+    /**
+    * [getNumeroCadires metode getter que retornara valor dels atributs de la classe]
+    * @return [type] [description]
+    */
     public function getNumeroCadires()
     {
         return $this->numeroCadires;
     }
 
+    /**
+    * [getNumTaula metode que  retorna el numero de taula dels atributs de la classe]
+    *@return [type] [description]
+    */
     public function getNumTaula()
     {
         return $this->numTaula;
     }
 
+    /**
+    * inserirTaula Metode per a inserir taules a la base de dades
+    * @return void [description]
+    */
     public function inserirTaula()
     {
         try {
-          $conn = crearConnexio();
+            $conn = crearConnexio();
 
-          if ($conn->connect_error) {
-              die("Connexió fallida: " . $conn->connect_error);
-          }
+            if ($conn->connect_error) {
+                die("Connexió fallida: " . $conn->connect_error);
+            }
 
-          $sql = "INSERT INTO TAULA (numero_taula, numero_cadires) VALUES (?,?)";
+            $sql = "INSERT INTO TAULA (numero_taula, numero_cadires) VALUES (?,?)";
 
-          $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql);
 
-          if ($stmt==false) {
-              //var_dump($stmt);
-              //die("Secured: Error al introduir el registre.");
-              throw new Exception();
-          }
+            if ($stmt==false) {
+                throw new Exception();
+            }
 
-          $resultBP = $stmt->bind_param("ii", $this->numTaula, $this->numeroCadires);
+            $resultBP = $stmt->bind_param("ii", $this->numTaula, $this->numeroCadires);
 
-          if ($resultBP==false) {
-              //var_dump($stmt);
-              //die("Secured2: Error al introduir el registre.");
-              throw new Exception();
-          }
+            if ($resultBP==false) {
+                throw new Exception();
+            }
 
-          $resultEx = $stmt->execute();
+            $resultEx = $stmt->execute();
 
-          if ($resultEx==false) {
-              //var_dump($stmt);
-              //die("Secured3: Error al introduir el registre.");
-              throw new Exception();
-          }
-          echo '<script>alert("Registre introduit.");</script>';
-          $stmt->close();
-          $conn->close();
-        }
-        catch (Exception $e) {
-          echo '<script>alert("Error al introduir el registre.");</script>';
+            if ($resultEx==false) {
+                throw new Exception();
+            }
+            echo '<script>alert("Registre introduit.");</script>';
+            $stmt->close();
+            $conn->close();
+        } catch (Exception $e) {
+            echo '<script>alert("Error al introduir el registre.");</script>';
         }
     }
 
+    /**
+     * [Metode per a llistar les taules]
+     * @return void [no retorna res]
+     */
     public static function llistar()
     {
-
-    //include_once $_SERVER ['DOCUMENT_ROOT']."/univeylandia/php/connection.php";
-
         $conn = crearConnexio();
         $sql= "SELECT * FROM TAULA";
         $result=$conn->query($sql);
@@ -112,8 +134,8 @@ class Taula
                 echo '</tr>';
                 echo '</tbody>';
 
+                /* MODAL PER MODIFICAR */
                 echo '<!-- Modal -->';
-
                 echo '<div class="modal fade" id="modalModificar'.$id_taula.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">';
                 echo '  <div class="modal-dialog modal-dialog-centered modal-md" role="document">';
                 echo '    <div class="modal-content">';
@@ -147,6 +169,7 @@ class Taula
                 echo '    </div>';
                 echo '  </div>';
                 echo '</div>';
+
                 /* MODAL PER ELIMINAR */
                 echo '<!-- Modal -->';
                 echo '<div class="modal fade" id="ModalEliminar'.$id_taula.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">';
@@ -184,10 +207,12 @@ class Taula
         $conn->close();
     }
 
-
+    /**
+     * Metode per llistar els resultats d'un filtre
+     * @return void
+     */
     public static function llistarTaulaBusqueda()
     {
-        //include_once $_SERVER ['DOCUMENT_ROOT']."/univeylandia/php/connection.php";
         $conn = crearConnexio();
 
         $filtre = $_POST['busqueda_taula'];
@@ -223,8 +248,8 @@ class Taula
                 echo '</tr>';
                 echo '</tbody>';
 
+                /* MODAL PER MODIFICAR */
                 echo '<!-- Modal -->';
-
                 echo '<div class="modal fade" id="modalModificar'.$id_taula.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">';
                 echo '  <div class="modal-dialog modal-dialog-centered modal-md" role="document">';
                 echo '    <div class="modal-content">';
@@ -258,6 +283,7 @@ class Taula
                 echo '    </div>';
                 echo '  </div>';
                 echo '</div>';
+
                 /* MODAL PER ELIMINAR */
                 echo '<!-- Modal -->';
                 echo '<div class="modal fade" id="ModalEliminar'.$id_taula.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">';
@@ -295,6 +321,10 @@ class Taula
         $conn->close();
     }
 
+    /**
+     * Metode per a modificar les taules
+     * @return void
+     */
     public function modificarTaula()
     {
         $conn = crearConnexio();
@@ -319,6 +349,10 @@ class Taula
         $conn->close();
     }
 
+    /**
+    * [Metode per a eliminar la taula seleccionada]
+    * @return void
+    */
     public static function eliminarTaula()
     {
         $conn = crearConnexio();
@@ -340,10 +374,12 @@ class Taula
         $conn->close();
     }
 
+    /**
+     * Metode per a fer un datalist que anira eliminant els resultats no coincidents amb el que escribim per teclat
+     * @return void
+     */
     public static function datalistLlistar()
     {
-        //include_once $_SERVER['DOCUMENT_ROOT']."/GestioHotel/php/connection.php";
-
         $conn = crearConnexio();
         $sql= "SELECT * FROM TAULA";
         $result=$conn->query($sql);
@@ -357,3 +393,4 @@ class Taula
         echo '</datalist>';
     }
 }
+?>

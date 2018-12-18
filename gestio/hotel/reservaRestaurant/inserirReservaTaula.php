@@ -340,18 +340,58 @@ if($_SESSION['rol'] != 3) {
                   <a class="nav-link nav-interior" href="#"><span data-feather="user-minus"></span>Eliminar Noticia</a>
                 </li>
               </ul>
-
-
             </ul>
           </div>
         </nav>
-
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Inserir Reserva Restaurant</h1>
           </div>
+          <form  method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
+            <div class="form-row">
+              <div class="col-md-3 mb-3">
+                <label>Número de Persones *</label>
+                <input type="number" class="form-control form-control-sm" placeholder="Nº Persones" name="numPersones" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label>Data i hora reserva *</label>
+                <input type="date" class="form-control form-control-sm" name="dataHora" required>
+              </div>
+          </div>
+            <button class="btn btn-primary" type="submit">Consultar</button>
+            <button class="btn btn-secondary" type="reset">Cancel·lar</button>
+          </form>
 
+          <?php
+            include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeReservaTaula.php";
+
+            if(isset($_POST['numPersones'])){
+
+              ReservaTaula::consultarLliures($_POST['numPersones'],$_POST['dataHora']);
+
+
+            }
+            if (isset($_POST['InsertReservaTaula'])) {
+
+              ReservaTaula::inserirReserva($_POST['nom'],$_POST['cognom'],$_POST['cognom2'],$_POST['hora']);
+            }
+           ?>
+
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Crear reserves de taules de forma massiva</h1>
+          </div>
+
+          <form>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-3 mb-3">
+                  <label for="exampleFormControlFile1">Pujar arxiu .CSV amb dades de taules</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
+                </div>
+              </div>
+            </div>
+          </form>
 
         </main>
       </div>

@@ -358,7 +358,35 @@ if($_SESSION['rol'] != 3) {
               </div>
             </div>
           </div>
+          <?php
+            include_once $_SERVER['DOCUMENT_ROOT']."/php/class/classeReservaTaula.php";
 
+            echo '<form method="post" style="margin-top=50px;">';
+            echo '  <div class="form-row">';
+            echo '    <div class="col-10">';
+            echo '      <input class="form-control" type="text" name="busqueda_reserva" placeholder="Filtrar...">';
+            echo '    </div>';
+            echo '    <div class="form-group row">';
+            echo '      <div class="offset-sm-2 col-sm-10">';
+            echo '        <input type="submit" class="btn btn-primary" name="buscar_reserva" value="Filtrar">';
+            echo '      </div>';
+            echo '    </div>';
+            echo '  </div>';
+            echo '</form>';
+
+            if (isset($_POST['busqueda_reserva'])) {
+              reservaTaula::llistarReservesBusqueda();
+            } else {
+              reservaTaula::llistarReserves();
+            }
+            if (isset($_POST['modificar'])) {
+              reservaTaula::modificarReserva();
+            }
+            if (isset($_POST['eliminar'])){
+              reservaTaula::eliminarReserva();
+            }
+
+           ?>
 
         </main>
       </div>

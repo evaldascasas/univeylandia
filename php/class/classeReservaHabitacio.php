@@ -1,22 +1,45 @@
 <?php
+/**
+ * classeReservaHabitacio.php: conté els atributs i mètodes de la classe ReservaHabitacio.
+ */
+/**
+ * include_once de la connexió a la BD.
+ */
 include_once $_SERVER['DOCUMENT_ROOT']."/php/connection.php";
-
+/**
+ * Classe ReservaHabitacio
+ */
 class ReservaHabitacio
 {
     //private $idTipusHabitacio;
+    /** @var [type] [description] */
     private $id_habitacio;
+    /** @var [type] [description] */
     private $id_usuari;
+    /** @var [type] [description] */
     private $nom;
+    /** @var [type] [description] */
     private $cognoms;
+    /** @var [type] [description] */
     private $doc_iden;
+    /** @var [type] [description] */
     private $tlf;
+    /** @var [type] [description] */
     private $num_persones;
+    /** @var [type] [description] */
     private $dataEntrada;
+    /** @var [type] [description] */
     private $dataSortida;
+    /** @var [type] [description] */
     private $id_pensio;
+    /** @var [type] [description] */
     private $preu_reserva;
 
     /* CONSTRUCTORS */
+
+    /**
+     * __construct: constructor de la classe.
+     */
     public function __construct()
     {
         $args = func_get_args();
@@ -27,6 +50,21 @@ class ReservaHabitacio
         }
     }
 
+    /**
+     * __construct11: constructor per crear un objecte ReservaHabitacio amb els atributs necessaris.
+     * @param  int $id_habitacio Hauria de contindre el ID d'habitació
+     * @param  int $id_usuari    Hauria de contindre el ID d'usuari
+     * @param  string $nom          Hauria de contindre el nom del client
+     * @param  string $cognoms      Hauria de contindre els cognoms del client
+     * @param  string $doc_iden     Hauria de contindre el número document identitat
+     * @param  string $tlf          Hauria de contindre el telèfon
+     * @param  int $num_persones Hauria de contindre el número de persones
+     * @param  date $dataEntrada  Hauria de contindre la data d'entrada
+     * @param  date $dataSortida  Hauria de contindre la data de sortida
+     * @param  int $id_pensio    Hauria de contindre el ID de pensió
+     * @param  int $preu_reserva Hauria de contindre el preu de la reserva
+     * @return void
+     */
     public function __construct11($id_habitacio, $id_usuari, $nom, $cognoms, $doc_iden, $tlf, $num_persones, $dataEntrada, $dataSortida, $id_pensio, $preu_reserva)
     {
         $this->id_habitacio = $id_habitacio;
@@ -43,6 +81,11 @@ class ReservaHabitacio
     }
 
     /* MÈTODES */
+
+    /**
+     * crearReserva: mètode que realitza un INSERT a la taula RESERVA_HABITACIO amb dades agafades d'un formulari.
+     * @return void
+     */
     public function crearReserva()
     {
         try {
@@ -57,7 +100,6 @@ class ReservaHabitacio
             $stmt = $conn->prepare($sql);
 
             if ($stmt==false) {
-                //var_dump($stmt);
                 die("Secured: Error al introduir el registre.");
                 throw new Exception();
             }
@@ -78,7 +120,6 @@ class ReservaHabitacio
         );
 
             if ($resultBP==false) {
-                //var_dump($stmt);
                 die("Secured2: Error al introduir el registre.");
                 throw new Exception();
             }
@@ -86,7 +127,6 @@ class ReservaHabitacio
             $resultEx = $stmt->execute();
 
             if ($resultEx==false) {
-                //var_dump($stmt);
                 die("Secured3: Error al introduir el registre.");
                 throw new Exception();
             }
@@ -98,7 +138,15 @@ class ReservaHabitacio
         }
     }
 
-
+    /**
+     * llistarHabitacionsLliures: Mètode static que llista les habitacions lliures que hi ha en un interval temporal.
+     * @param  date $data_Entrada          Data d'inici de la reserva
+     * @param  date $data_Sortida          Data de fi de la reserva
+     * @param  int $idTipusHabitacio      ID del tipus d'habitació
+     * @param  int $id_pensio_seleccionat ID del tipus de pensió
+     * @param  int $num_persones          Número de persones
+     * @return void
+     */
     public static function llistarHabitacionsLliures($data_Entrada, $data_Sortida, $idTipusHabitacio, $id_pensio_seleccionat, $num_persones)
     {
         try {
@@ -118,15 +166,6 @@ class ReservaHabitacio
                 /* Calcul interval de dies que es vol fer la reserva */
                 $interval = $DATA_ENTRADA->diff($DATA_SORTIDA);
                 $num_dies = $interval->days;
-                //echo $num_dies;
-
-                /*$sql = "SELECT HABITACIO.id_habitacio, HABITACIO.num_habitacio, TIPUS_HABITACIO.nom_tipus_habitacio, TIPUS_HABITACIO.preu_tipus_habitacio FROM HABITACIO, TIPUS_HABITACIO WHERE NOT EXISTS
-                (SELECT * from RESERVA_HABITACIO WHERE
-                (($dataEntrada BETWEEN data_entrada AND date_sub(data_sortida, interval +1 day)) OR
-                ($dataSortida BETWEEN date_sub(data_entrada, interval -1 day) AND data_sortida) OR
-                (data_entrada <= $dataEntrada AND data_sortida >= $dataSortida) OR (data_entrada >= $dataEntrada AND data_sortida <= $dataSortida)) AND
-                HABITACIO.id_habitacio = RESERVA_HABITACIO.id_habitacio) AND (HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio AND HABITACIO.id_tipus_habitacio = $idTipusHabitacio)";
-                */
 
                 $sql = "SELECT HABITACIO.id_habitacio, HABITACIO.num_habitacio, TIPUS_HABITACIO.nom_tipus_habitacio, TIPUS_HABITACIO.preu_tipus_habitacio
                 FROM HABITACIO, TIPUS_HABITACIO
@@ -144,60 +183,9 @@ class ReservaHabitacio
                     )
                     AND ( HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio AND HABITACIO.id_tipus_habitacio = '$idTipusHabitacio' )
                     ORDER BY HABITACIO.num_habitacio";
-/*
-                    $sql = "SELECT HABITACIO.id_habitacio, HABITACIO.num_habitacio, TIPUS_HABITACIO.nom_tipus_habitacio, TIPUS_HABITACIO.preu_tipus_habitacio
-                    FROM HABITACIO, TIPUS_HABITACIO
-                      WHERE (HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio) AND HABITACIO.id_habitacio NOT IN
-                        (SELECT id_habitacio FROM RESERVA_HABITACIO WHERE
-                        (
-                          (? BETWEEN data_entrada AND date_sub(data_sortida, INTERVAL +1 day))
-                          OR
-                          (? BETWEEN date_sub(data_entrada, INTERVAL -1 day) AND data_sortida)
-                          OR
-                          (data_entrada <= ? AND data_sortida >= ?)
-                          OR
-                          (data_entrada >= ? AND data_sortida <= ?)
-                        ) ORDER BY id_reserva_habitacio
-                        )
-                        AND ( HABITACIO.id_tipus_habitacio = TIPUS_HABITACIO.id_tipus_habitacio AND HABITACIO.id_tipus_habitacio = ? )
-                        ORDER BY HABITACIO.num_habitacio";
-*/
+
                 $result = $conn->query($sql);
-                /*$stmt = $conn->prepare($sql);
 
-                if ($stmt==false) {
-                    //var_dump($stmt);
-                    die("Secured: Error 1");
-                    throw new Exception();
-                }
-
-                $resultBP = $stmt->bind_param(
-                "ssssssi",
-                $data_Entrada,
-                $data_Sortida,
-                $data_Entrada,
-                $data_Sortida,
-                $data_Entrada,
-                $data_Sortida,
-                $idTipusHabitacio
-                );
-
-                if ($resultBP==false) {
-                    //var_dump($stmt);
-                    die("Secured2: Error 2");
-                    throw new Exception();
-                }
-
-                $resultEx = $stmt->execute();
-                $resultStmt = $stmt->get_result();
-
-                if ($resultEx==false) {
-                    //var_dump($stmt);
-                    die("Secured3: 3");
-                    throw new Exception();
-                }*/
-
-                //if ($resultStmt->num_rows > 0) {
                 if ($result->num_rows > 0) {
                     /* Consulta per treure el preu del tipus de pensio seleccionat */
                     $sql2 = "SELECT * FROM PENSIO WHERE id_pensio = $id_pensio_seleccionat";
@@ -216,14 +204,12 @@ class ReservaHabitacio
                     echo '<table class="table table-bordered table-hover table-sm">';
                     echo '<thead class="thead-light">';
                     echo '<tr>';
-                    //echo '<th>ID</th>';
                     echo '<th>Número habitació</th>';
                     echo '<th>Tipus habitació</th>';
                     echo '<th>Preu habitació (€)</th>';
                     echo '</tr>';
                     echo '</thead>';
 
-                    //while ($row = $resultStmt->fetch_assoc()) {
                     while ($row = $result->fetch_assoc()) {
                         $id_hab = $row['id_habitacio'];
                         $num_hab = $row['num_habitacio'];
@@ -340,7 +326,10 @@ class ReservaHabitacio
         }
     }
 
-
+    /**
+     * llistarReservaHabitacio: Mètode static que llista totes les reserves en una taula.
+     * @return void
+     */
     public static function llistarReservaHabitacio()
     {
         try {
@@ -415,39 +404,6 @@ class ReservaHabitacio
                     echo '<td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ModalEliminar'.$id_reserva_hab.'">Eliminar</button></td>';
                     echo '</tr>';
                     echo '</tbody>';
-
-                    /* MODAL PER MODIFICAR
-                    echo '<!-- Modal -->';
-                    echo '<div class="modal fade" id="modalModificar'.$id_reserva_hab.'" tabindex="-1" role="dialog" aria-hidden="true">';
-                    echo '  <div class="modal-dialog modal-dialog-centered modal-md" role="document">';
-                    echo '    <div class="modal-content">';
-                    echo '      <div class="modal-header">';
-                    echo '        <h5 class="modal-title" id="exampleModalLongTitle">Modificar Reserva</h5>';
-                    echo '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-                    echo '          <span aria-hidden="true">&times;</span>';
-                    echo '        </button>';
-                    echo '      </div>';
-                    echo '      <div class="modal-body">';
-                    echo '        <div class="container">';
-                    echo '          <form method="post">';
-                    echo '            <div class="form-row">';
-                    echo '              <div class="col-md-12 mb-3" style="display: none;">';
-                    echo '                <input class="form-control" type="text" value="'.$id_reserva_hab.'" name="id_reserva_hab">';
-                    echo '              </div>';
-                    echo '              <div class="col-md-12 mb-3">';
-                    echo '                <label for="num_habitacio">Número habitació</label>';
-                    echo '                <input disabled class="form-control" type="text" value="'.$num_hab.'" name="num_hab_mod">';
-                    echo '              </div>';
-                    echo '            </div>';
-                    echo '            <input type="submit" class="btn btn-primary" name="modificar" value="Modificar">';
-                    echo '            <input type="button" class="btn btn-secondary" data-dismiss="modal" name="cancelar" value="Cancel·lar">';
-                    echo '          </form>';
-                    echo '        </div>';
-                    echo '       </div>';
-                    echo '    </div>';
-                    echo '  </div>';
-                    echo '</div>';
-                    */
 
                     /* MODAL PER MODIFICAR */
                     echo '<!-- Modal -->';
@@ -576,7 +532,10 @@ class ReservaHabitacio
         }
     }
 
-
+    /**
+     * llistarReservaHabitacioBusqueda: Mètode static que filtra els resultats del llistat de reserves.
+     * @return void
+     */
     public static function llistarReservaHabitacioBusqueda()
     {
         try {
@@ -784,7 +743,10 @@ class ReservaHabitacio
         }
     }
 
-
+    /**
+     * modificarReservaHabitacio: Mètode static que agafa el ID del modal modificar i realitza un UPDATE en el registre de la BD amb aquest ID.
+     * @return void
+     */
     public static function modificarReservaHabitacio()
     {
         $conn = crearConnexio();
@@ -794,19 +756,10 @@ class ReservaHabitacio
         }
 
         $id_reserva_hab_mod = $_POST['id_reserva_hab'];
-        //$num_hab_res_mod = $_POST['num_hab_res_mod'];
-        //$tipus_hab_res_mod = $_POST['tipus_hab_res_mod'];
-        //$data_entrada_mod = $_POST['data_entrada_mod'];
-        //$data_sortida_mod = $_POST['data_sortida_mod'];
-        //$tipus_pensio_mod = $_POST['tipus_pensio_mod'];
-        //$num_persones_mod = $_POST['num_persones_mod'];
-        //$preu_reserva_mod = $_POST['preu_reserva_mod'];
         $nom_res_mod = $_POST['nom_res_mod'];
         $cognoms_res_mod = $_POST['cognoms_res_mod'];
         $dni_res_mod = $_POST['dni_res_mod'];
         $tlf_res_mod = $_POST['tlf_res_mod'];
-
-        //$sql = "UPDATE RESERVA_HABITACIO SET nom=?, cognom=?, document=?, telefon=? WHERE id_reserva_habitacio =?";
 
         $sql = "UPDATE RESERVA_HABITACIO SET nom='$nom_res_mod', cognom='$cognoms_res_mod', document='$dni_res_mod', telefon='$tlf_res_mod' WHERE id_reserva_habitacio =$id_reserva_hab_mod";
 
@@ -814,7 +767,6 @@ class ReservaHabitacio
             echo '<script>window.location.href = window.location.href + "?refresh";</script>';
         } else {
             echo '<script>alert("Error!");</script>';
-            //echo "Error updating record: " . mysqli_error($conn);
         }
         $conn->close();
 /*
@@ -861,6 +813,10 @@ class ReservaHabitacio
 */
     }
 
+    /**
+     * eliminarReservaHabitacio: Mètode static que agafa el ID del modal eliminar i elimina el registre de la BD amb aquest ID.
+     * @return void
+     */
     public static function eliminarReservaHabitacio()
     {
         $conn = crearConnexio();
@@ -880,4 +836,8 @@ class ReservaHabitacio
         }
         $conn->close();
     }
+
+
 }
+
+?>
