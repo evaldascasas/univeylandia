@@ -36,7 +36,7 @@
   </nav>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-4">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">Univeylandia </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
