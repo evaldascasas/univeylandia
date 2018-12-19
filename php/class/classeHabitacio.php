@@ -1,21 +1,17 @@
 <?php
 /**
  * classeHabitacio.php: conté els atributs i mètodes de la classe Habitacio.
- */
-/**
- * include_once de l'arxiu que conté la connexió a la BD.
+ * @author Grup 3: Evaldas Casas, Joan Manel Sancho
  */
 include_once $_SERVER['DOCUMENT_ROOT']."/php/connection.php";
-/**
- * Classe Habitacio
- */
+
 class Habitacio
 {
-    /** @var string hauria de contenir el ID_habitacio */
+    /** @var String hauria de contenir el ID_habitacio */
     private $idHab;
-    /** @var string hauria de contenir el numero d'habitacio */
+    /** @var String hauria de contenir el numero d'habitacio */
     private $numHab;
-    /** @var string hauria de contenir el tipus d'habitacio */
+    /** @var String hauria de contenir el tipus d'habitacio */
     private $tipusHab;
 
     /**
@@ -33,7 +29,7 @@ class Habitacio
 
     /**
      * __construct0: Constructor buit
-     * @return void
+     * @return Void
      */
     public function __construct0()
     {
@@ -43,7 +39,7 @@ class Habitacio
      * __construct2: Constructor per utilitzar al crear una habitació
      * @param  $numHab   hauria de contenir el número d'habitació
      * @param  $tipusHab hauria de contenir el tipus d'habitació
-     * @return void
+     * @return Void
      */
     public function __construct2($numHab, $tipusHab)
     {
@@ -56,7 +52,7 @@ class Habitacio
 
     /**
     * crearHabitacio: Mètode que agafa les dades d'un formulari i les insereix en la base de dades.
-    * @return void
+    * @return Void
     */
     public function crearHabitacio()
     {
@@ -96,7 +92,7 @@ class Habitacio
 
     /**
      * llistarHabitacio: Mètode static que llista totes les habitacions que hi ha a la base de dades relacionant el ID del tipus d'habitació amb el nom del tipus d'habitació.
-     * @return void
+     * @return Void
      */
     public static function llistarHabitacio()
     {
@@ -229,7 +225,7 @@ class Habitacio
 
     /**
      * llistarHabitacionsBusqueda: Mètode static que realitza una cerca del valor que li introduim en la barra de cerca en la taula de les habitacions en la base de dades.
-     * @return void
+     * @return Void
      */
     public static function llistarHabitacionsBusqueda()
     {
@@ -364,7 +360,7 @@ class Habitacio
 
     /**
      * modificarHabitacio: Mètode static que agafa el ID del modal modificar i realitza un UPDATE en el registre de la BD amb aquest ID.
-     * @return void
+     * @return Void
      */
     public static function modificarHabitacio()
     {
@@ -392,7 +388,7 @@ class Habitacio
 
     /**
      * eliminarHabitacio: Mètode static que agafa el ID del modal eliminar i elimina el registre de la BD amb aquest ID.
-     * @return void
+     * @return Void
      */
     public static function eliminarHabitacio()
     {
@@ -418,7 +414,7 @@ class Habitacio
 
     /**
      * llistarTipusHabitacio: Mètode static que llista els tipus d'habitació existents des de la BD.
-     * @return void
+     * @return Void
      */
     public static function llistarTipusHabitacio()
     {
@@ -449,8 +445,8 @@ class Habitacio
 
     /**
      * llistarTipusHabitacioModificar: Mètode static que llista el tipus d'habitació en un modal, agafant l'element <option> que té el registre de la base de dades.
-     * @param  int $id_tipus_hab és el ID del tipus d'habitació.
-     * @return void
+     * @param  Integer $id_tipus_hab és el ID del tipus d'habitació.
+     * @return Void
      */
     public static function llistarTipusHabitacioModificar($id_tipus_hab)
     {
@@ -486,7 +482,7 @@ class Habitacio
 
     /**
      * llistarPensio: Mètode static que llista els tipus de pensió.
-     * @return void
+     * @return Void
      */
     public static function llistarPensio()
     {
@@ -518,8 +514,8 @@ class Habitacio
 
     /**
      * llistarPensioSeleccionat: Mètode static que llista el tipus de pensió que té assignat un registre de la BD.
-     * @param  int $id_pensio_seleccionat és el ID del tipus de pensió.
-     * @return void
+     * @param  Integer $id_pensio_seleccionat és el ID del tipus de pensió.
+     * @return Void
      */
     public static function llistarPensioSeleccionat($id_pensio_seleccionat)
     {
@@ -556,7 +552,7 @@ class Habitacio
 
     /**
      * llistatHabitacionsPDF: Mètode static que genera un arxiu PDF amb el llistat d'habitacions
-     * @return void
+     * @return Void
      */
     public static function llistatHabitacionsPDF()
     {

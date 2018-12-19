@@ -28,7 +28,7 @@ class Cart {
 
   /**
   *Retorna un especific item del carrito
-  * @param    string    $row_id
+  * @param    String    $row_id
   * @return    array
   */
 
@@ -40,7 +40,7 @@ class Cart {
 
    /**
      * Total Items: Returns the total item count
-     * @return    int
+     * @return    Integer
      */
     public function total_items(){
         return $this->cart_contents['total_items'];
@@ -48,7 +48,7 @@ class Cart {
 
     /**
      * [total description]  Returns the total price
-     * @return [type] int [description]
+     * @return [type] Integer [description]
      */
     public function total(){
         return $this->cart_contents['cart_total'];
@@ -163,7 +163,7 @@ class Cart {
 
     /**
      * Remove Item: Removes an item from the cart
-     * @param    int
+     * @param    Integer
      * @return    bool
      */
      public function remove($row_id){
@@ -175,7 +175,7 @@ class Cart {
 
     /**
      * Destroy the cart: Empties the cart and destroy the session
-     * @return    void
+     * @return    Void
      */
     public function destroy(){
         $this->cart_contents = array('cart_total' => 0, 'total_items' => 0);

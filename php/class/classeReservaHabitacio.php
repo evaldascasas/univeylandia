@@ -1,38 +1,34 @@
 <?php
 /**
  * classeReservaHabitacio.php: conté els atributs i mètodes de la classe ReservaHabitacio.
- */
-/**
- * include_once de la connexió a la BD.
+ * @author Grup 3: Evaldas Casas, Joan Manel Sancho
  */
 include_once $_SERVER['DOCUMENT_ROOT']."/php/connection.php";
-/**
- * Classe ReservaHabitacio
- */
+
 class ReservaHabitacio
 {
     //private $idTipusHabitacio;
-    /** @var [type] [description] */
+    /** @var Integer Hauria de contenir un ID d'habitacio */
     private $id_habitacio;
-    /** @var [type] [description] */
+    /** @var Integer Hauria de contenir un ID d'usuari */
     private $id_usuari;
-    /** @var [type] [description] */
+    /** @var String Hauria de contenir el nom de qui fa la reserva */
     private $nom;
-    /** @var [type] [description] */
+    /** @var String Hauria de contenir els cognoms de qui fa la reserva */
     private $cognoms;
-    /** @var [type] [description] */
+    /** @var String Hauria de contenir el número de document de qui fa la reserva */
     private $doc_iden;
-    /** @var [type] [description] */
+    /** @var String Hauria de contenir el número de telèfon de qui fa la reserva */
     private $tlf;
-    /** @var [type] [description] */
+    /** @var Integer Hauria de contenir el número de persones que consten a la reserva */
     private $num_persones;
-    /** @var [type] [description] */
+    /** @var String Hauria de contenir la data d'inici de la reserva */
     private $dataEntrada;
-    /** @var [type] [description] */
+    /** @var String Hauria de contenir la data de fi de la reserva */
     private $dataSortida;
-    /** @var [type] [description] */
+    /** @var Integer Hauria de contenir el tipus de pensió que vol el client en la reserva */
     private $id_pensio;
-    /** @var [type] [description] */
+    /** @var Integer Hauria de contenir el preu de la reserva */
     private $preu_reserva;
 
     /* CONSTRUCTORS */
@@ -52,18 +48,18 @@ class ReservaHabitacio
 
     /**
      * __construct11: constructor per crear un objecte ReservaHabitacio amb els atributs necessaris.
-     * @param  int $id_habitacio Hauria de contindre el ID d'habitació
-     * @param  int $id_usuari    Hauria de contindre el ID d'usuari
-     * @param  string $nom          Hauria de contindre el nom del client
-     * @param  string $cognoms      Hauria de contindre els cognoms del client
-     * @param  string $doc_iden     Hauria de contindre el número document identitat
-     * @param  string $tlf          Hauria de contindre el telèfon
-     * @param  int $num_persones Hauria de contindre el número de persones
-     * @param  date $dataEntrada  Hauria de contindre la data d'entrada
-     * @param  date $dataSortida  Hauria de contindre la data de sortida
-     * @param  int $id_pensio    Hauria de contindre el ID de pensió
-     * @param  int $preu_reserva Hauria de contindre el preu de la reserva
-     * @return void
+     * @param  Integer $id_habitacio Hauria de contenir el ID d'habitació
+     * @param  Integer $id_usuari    Hauria de contenir el ID d'usuari
+     * @param  String $nom          Hauria de contenir el nom del client
+     * @param  String $cognoms      Hauria de contenir els cognoms del client
+     * @param  String $doc_iden     Hauria de contenir el número document identitat
+     * @param  String $tlf          Hauria de contenir el telèfon
+     * @param  Integer $num_persones Hauria de contenir el número de persones
+     * @param  String $dataEntrada  Hauria de contenir la data d'entrada
+     * @param  String $dataSortida  Hauria de contenir la data de sortida
+     * @param  Integer $id_pensio    Hauria de contenir el ID de pensió
+     * @param  Integer $preu_reserva Hauria de contenir el preu de la reserva
+     * @return Void
      */
     public function __construct11($id_habitacio, $id_usuari, $nom, $cognoms, $doc_iden, $tlf, $num_persones, $dataEntrada, $dataSortida, $id_pensio, $preu_reserva)
     {
@@ -84,7 +80,7 @@ class ReservaHabitacio
 
     /**
      * crearReserva: mètode que realitza un INSERT a la taula RESERVA_HABITACIO amb dades agafades d'un formulari.
-     * @return void
+     * @return Void
      */
     public function crearReserva()
     {
@@ -142,10 +138,10 @@ class ReservaHabitacio
      * llistarHabitacionsLliures: Mètode static que llista les habitacions lliures que hi ha en un interval temporal.
      * @param  date $data_Entrada          Data d'inici de la reserva
      * @param  date $data_Sortida          Data de fi de la reserva
-     * @param  int $idTipusHabitacio      ID del tipus d'habitació
-     * @param  int $id_pensio_seleccionat ID del tipus de pensió
-     * @param  int $num_persones          Número de persones
-     * @return void
+     * @param  Integer $idTipusHabitacio      ID del tipus d'habitació
+     * @param  Integer $id_pensio_seleccionat ID del tipus de pensió
+     * @param  Integer $num_persones          Número de persones
+     * @return Void
      */
     public static function llistarHabitacionsLliures($data_Entrada, $data_Sortida, $idTipusHabitacio, $id_pensio_seleccionat, $num_persones)
     {
@@ -328,7 +324,7 @@ class ReservaHabitacio
 
     /**
      * llistarReservaHabitacio: Mètode static que llista totes les reserves en una taula.
-     * @return void
+     * @return Void
      */
     public static function llistarReservaHabitacio()
     {
@@ -534,7 +530,7 @@ class ReservaHabitacio
 
     /**
      * llistarReservaHabitacioBusqueda: Mètode static que filtra els resultats del llistat de reserves.
-     * @return void
+     * @return Void
      */
     public static function llistarReservaHabitacioBusqueda()
     {
@@ -745,7 +741,7 @@ class ReservaHabitacio
 
     /**
      * modificarReservaHabitacio: Mètode static que agafa el ID del modal modificar i realitza un UPDATE en el registre de la BD amb aquest ID.
-     * @return void
+     * @return Void
      */
     public static function modificarReservaHabitacio()
     {
@@ -815,7 +811,7 @@ class ReservaHabitacio
 
     /**
      * eliminarReservaHabitacio: Mètode static que agafa el ID del modal eliminar i elimina el registre de la BD amb aquest ID.
-     * @return void
+     * @return Void
      */
     public static function eliminarReservaHabitacio()
     {

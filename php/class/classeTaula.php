@@ -1,23 +1,19 @@
 <?php
 /**
  * classeTaula.php: conté els atributs i mètodes de la classe Taula.
- */
-/**
- * include_once de la connexió a la BD.
+ * @author Grup 3: Evaldas Casas, Joan Manel Sancho
  */
 include_once $_SERVER['DOCUMENT_ROOT']."/php/connection.php";
-/**
- * Taula Conte tots els metodes setters i getters i els seus atributs
- */
+
 class Taula
 {
     private $numeroCadires;
     private $numTaula;
 
     /**
-     * [__construct metode constructor de dos atributs]
-     * @param [type] $numTaula      [numero de taula]
-     * @param [type] $numeroCadires [numero de cadires]
+     * __construct metode constructor de dos atributs
+     * @param Integer $numTaula      numero de taula
+     * @param Integer $numeroCadires numero de cadires
      */
     public function __construct($numTaula, $numeroCadires)
     {
@@ -26,8 +22,8 @@ class Taula
     }
 
     /**
-     * [setNumeroCadires metode setter rebra per parametres el numero de cadires i li assignara valor als atributs del objecte]
-     * @param [type] $numeroCadires [description]
+     * setNumeroCadires metode setter rebra per parametres el numero de cadires i li assignara valor als atributs del objecte
+     * @param Integer $numeroCadires número de cadires
      */
     public function setNumeroCadires($numeroCadires)
     {
@@ -35,8 +31,8 @@ class Taula
     }
 
     /**
-     * [setNumTaula metode setter que rebra el numero de taula per parametres i li assignara valor als atributs del objecte]
-     * @param [type] $numTaula [description]
+     * setNumTaula metode setter que rebra el numero de taula per parametres i li assignara valor als atributs del objecte
+     * @param Integer $numTaula número de taula
      */
     public function setNumTaula($numTaula)
     {
@@ -44,8 +40,8 @@ class Taula
     }
 
     /**
-    * [getNumeroCadires metode getter que retornara valor dels atributs de la classe]
-    * @return [type] [description]
+    * getNumeroCadires metode getter que retornara valor dels atributs de la classe
+    * @return numeroCadires númeor de cadires
     */
     public function getNumeroCadires()
     {
@@ -53,8 +49,8 @@ class Taula
     }
 
     /**
-    * [getNumTaula metode que  retorna el numero de taula dels atributs de la classe]
-    *@return [type] [description]
+    * getNumTaula metode que  retorna el numero de taula dels atributs de la classe
+    *@return numTaula número de taula
     */
     public function getNumTaula()
     {
@@ -63,7 +59,7 @@ class Taula
 
     /**
     * inserirTaula Metode per a inserir taules a la base de dades
-    * @return void [description]
+    * @return Void
     */
     public function inserirTaula()
     {
@@ -102,8 +98,8 @@ class Taula
     }
 
     /**
-     * [Metode per a llistar les taules]
-     * @return void [no retorna res]
+     * llistar: Metode per a llistar les taules
+     * @return Void
      */
     public static function llistar()
     {
@@ -208,8 +204,8 @@ class Taula
     }
 
     /**
-     * Metode per llistar els resultats d'un filtre
-     * @return void
+     * llistarTaulaBusqueda: Metode per llistar els resultats d'un filtre
+     * @return Void
      */
     public static function llistarTaulaBusqueda()
     {
@@ -322,8 +318,8 @@ class Taula
     }
 
     /**
-     * Metode per a modificar les taules
-     * @return void
+     * modificarTaula: Metode per a modificar les taules
+     * @return Void
      */
     public function modificarTaula()
     {
@@ -350,8 +346,8 @@ class Taula
     }
 
     /**
-    * [Metode per a eliminar la taula seleccionada]
-    * @return void
+    * eliminarTaula: Metode per a eliminar la taula seleccionada
+    * @return Void
     */
     public static function eliminarTaula()
     {
@@ -375,8 +371,8 @@ class Taula
     }
 
     /**
-     * Metode per a fer un datalist que anira eliminant els resultats no coincidents amb el que escribim per teclat
-     * @return void
+     * datalistLlistar: Metode per a fer un datalist que anira eliminant els resultats no coincidents amb el que escribim per teclat
+     * @return Void
      */
     public static function datalistLlistar()
     {
@@ -388,7 +384,6 @@ class Taula
 
         foreach ($result as $key => $row) {
             echo '<option value="'.$row['id_taula'].'">';
-            // code...
         }
         echo '</datalist>';
     }

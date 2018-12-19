@@ -1,27 +1,23 @@
 <?php
 /**
  * classeReservaTaula.php: conté els atributs i mètodes de la classe ReservaTaula.
- */
-/**
- * include_once de la connexió a la BD.
+ * @author Grup 3: Evaldas Casas, Joan Manel Sancho
  */
 include_once $_SERVER['DOCUMENT_ROOT']."/php/connection.php";
-/**
- * [Classe reservaTaula es per a inserir, modificar, eliminar, consultar reserves]
- */
+
 class reservaTaula
 {
-    /** @var string Guarda el nom */
+    /** @var String Guarda el nom */
     private $nom;
-    /** @var string Guarda el cognom */
+    /** @var String Guarda el cognom */
     private $cognom;
-    /** @var string Guarda el segon cognom */
+    /** @var String Guarda el segon cognom */
     private $cognom2;
     /** @var date Guarda la data de la reserva */
     private $data;
     /** @var time Guarda L'hora de la reserva */
     private $hora;
-    /** @var int Guarda el numero de persones */
+    /** @var Integer Guarda el numero de persones */
     private $numeroPax;
 
     /**
@@ -38,10 +34,10 @@ class reservaTaula
     }
 
     /**
-     * Contructor que s'utilitza per crear un objecte ReservaTaula amb 2 paràmetres.
-     * @param  int $numeroPax numero de persones de la reserva
+     * Contructor que s'utilitza per crear un objecte amb 2 paràmetres.
+     * @param  Integer $numeroPax numero de persones de la reserva
      * @param  date $data      data de reserva
-     * @return void
+     * @return Void
      */
     public function __construct2($numeroPax, $data)
     {
@@ -50,14 +46,14 @@ class reservaTaula
     }
 
     /**
-     * Constructor que s'utilitza per crear un objecte ReservaTaula amb 6 paràmetres per crear una reserva.
-     * @param  [String] $nom       [Nom del client]
-     * @param  [String] $cognom    [Cognom del client]
-     * @param  [String] $cognom2   [Segon cognom del client]
-     * @param  [date] $data      [data de la reserva]
-     * @param  [time] $hora      [hora de la reserva]
-     * @param  [integer] $numeroPax [Persones de la reserva]
-     * @return [type]            [no retorna res]
+     * Constructor que s'utilitza per crear un objecte amb 6 paràmetres per crear una reserva.
+     * @param  String $nom       Nom del client
+     * @param  String $cognom    Cognom del client
+     * @param  String $cognom2   Segon cognom del client
+     * @param  String $data      data de la reserva
+     * @param  String $hora      hora de la reserva
+     * @param  Integer $numeroPax Persones de la reserva
+     * @return Void
      */
     public function __construct6($nom, $cognom, $cognom2, $data, $hora, $numeroPax)
     {
@@ -71,9 +67,9 @@ class reservaTaula
 
     /**
      * consultarLliures Mètode per a consultar les taules lliures cuant volem inserir una reserva un dia determinat
-     * @param  integer $numeroPax número de persones
-     * @param  date $dataHora data de reserva
-     * @return void
+     * @param  Integer $numeroPax número de persones
+     * @param  String $dataHora data de reserva
+     * @return Void
      */
     public static function consultarLliures($numeroPax, $dataHora)
     {
@@ -185,11 +181,11 @@ class reservaTaula
 
     /**
      * inserirReserva Metode per a inserir reserva
-     * @param  string $nom     Rebra per parametre el nom del client
-     * @param  string $cognom  Rebra per parametre el cognom del client
-     * @param  string $cognom2 Rebra per parametre el segon cognom del client
-     * @param  date $hora    Rebra per parametre la data de la reserva
-     * @return void
+     * @param  String $nom     Rebra per parametre el nom del client
+     * @param  String $cognom  Rebra per parametre el cognom del client
+     * @param  String $cognom2 Rebra per parametre el segon cognom del client
+     * @param  String $hora    Rebra per parametre la data de la reserva
+     * @return Void
      */
     public function inserirReserva($nom, $cognom, $cognom2, $hora)
     {
@@ -220,7 +216,7 @@ class reservaTaula
 
     /**
      * llistarReserves Metode per a llistar les reserves
-     * @return void
+     * @return Void
      */
     public function llistarReserves()
     {
@@ -369,7 +365,7 @@ class reservaTaula
 
     /**
      * llistarReservesBusqueda Metode per a llistar les reserves del buscador
-     * @return void
+     * @return Void
      */
     public static function llistarReservesBusqueda()
     {
@@ -523,7 +519,7 @@ class reservaTaula
 
     /**
      * modificarReserva Mètode per a modificar la reserva de taula
-     * @return void
+     * @return Void
      */
     public function modificarReserva()
     {
@@ -571,7 +567,7 @@ class reservaTaula
 
     /**
     * eliminarReserva Mètode per a eliminar una reserva
-    * @return void
+    * @return Void
     */
     public static function eliminarReserva()
     {
@@ -596,7 +592,7 @@ class reservaTaula
 
     /**
      * datalistLlistarReserves descarga al cercador tots els noms per a fer un buscador seleccionable
-     * @return void
+     * @return Void
      */
     public static function datalistLlistarReserves()
     {
