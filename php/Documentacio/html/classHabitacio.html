@@ -125,7 +125,8 @@ Mètodes Públics Estàtics</h2></td></tr>
 <tr class="separator:a1ba0a6a5d01fa7fb786617f0856cc9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripció Detallada</h2>
-<div class="textblock"><p>classeHabitacio.php: conté els atributs i mètodes de la classe <a class="el" href="classHabitacio.html">Habitacio</a>. </p><dl class="section author"><dt>Autor</dt><dd>Grup 3: Evaldas Casas, Joan Manel Sancho </dd></dl>
+<div class="textblock"><p>classeHabitacio.php: arxiu que conté els atributs i mètodes de la classe <a class="el" href="classHabitacio.html">Habitacio</a>. </p><dl class="section author"><dt>Autor</dt><dd>Grup 3: Evaldas Casas </dd></dl>
+<dl class="section version"><dt>Versió</dt><dd>1.0 Classe <a class="el" href="classHabitacio.html">Habitacio</a>: classe que s'utilitza per crear objectes de tipus <a class="el" href="classHabitacio.html">Habitacio</a>, per introduir habitacions en la base de dades, modificar-les, llistar-les i eliminar-les. Compta amb alguns mètodes auxiliars, com per exemple un per llistar les habitacions. </dd></dl>
 </div><h2 class="groupheader">Documentació del Constructor i el Destructor</h2>
 <a class="anchor" id="a274eb9ebcca42e2635eccea7648b0c5b"></a>
 <div class="memitem">
@@ -183,7 +184,7 @@ Mètodes Públics Estàtics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>__construct2: Constructor per utilitzar al crear una habitació </p><dl class="params"><dt>Paràmetres</dt><dd>
+<p>__construct2: Constructor per utilitzar al crear un objecte de tipus habitació </p><dl class="params"><dt>Paràmetres</dt><dd>
   <table class="params">
     <tr><td class="paramname">$numHab</td><td>hauria de contenir el número d'habitació </td></tr>
     <tr><td class="paramname">$tipusHab</td><td>hauria de contenir el tipus d'habitació </td></tr>
@@ -206,7 +207,9 @@ Mètodes Públics Estàtics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>crearHabitacio: Mètode que agafa les dades d'un formulari i les insereix en la base de dades. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>crearHabitacio: Mètode que agafa les dades d'un formulari i les insereix en la base de dades.</p>
+<p>El resultat d'aquest mètode és la inserció d'un registre en la taula Habitació de la BD, aquest registre conté les dades que s'han agafat del formulari de creació d'habitacions.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -230,7 +233,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>eliminarHabitacio: Mètode static que agafa el ID del modal eliminar i elimina el registre de la BD amb aquest ID. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>eliminarHabitacio: Mètode static que agafa el ID del modal eliminar i elimina el registre de la BD amb aquest ID.</p>
+<p>El resultat d'aquest mètode és la eliminació d'un registre concret de la taula Habitació.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -254,7 +259,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistarHabitacio: Mètode static que llista totes les habitacions que hi ha a la base de dades relacionant el ID del tipus d'habitació amb el nom del tipus d'habitació. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>llistarHabitacio: Mètode static que llista totes les habitacions que hi ha a la base de dades relacionant el ID del tipus d'habitació amb el nom del tipus d'habitació.</p>
+<p>El resultat d'aquest mètode és una taula on apareixen els registres de la taula Habitació. També imprimeix botons per eliminar i modificar, a part dels modals que estaran ocults fins que s'activin els botons.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -278,7 +285,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistarHabitacionsBusqueda: Mètode static que realitza una cerca del valor que li introduim en la barra de cerca en la taula de les habitacions en la base de dades. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>llistarHabitacionsBusqueda: Mètode static que realitza una cerca del valor que li introduim en la barra de cerca en la taula de les habitacions en la base de dades.</p>
+<p>El resultat d'aquest mètode és una taula on apareixen els registres de la taula Habitació que continguin el valor que s'ha escrit en la barra de cerca. També imprimeix botons per eliminar i modificar, a part dels modals que estaran ocults fins que s'activin els botons.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -302,7 +311,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistarPensio: Mètode static que llista els tipus de pensió. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>llistarPensio: Mètode static que llista els tipus de pensió.</p>
+<p>El resultat d'aquest mètode és un desplegable on es llisten tots els tipus de pensió que hi ha definits en la base de dades.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -327,7 +338,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistarPensioSeleccionat: Mètode static que llista el tipus de pensió que té assignat un registre de la BD. </p><dl class="params"><dt>Paràmetres</dt><dd>
+<p>llistarPensioSeleccionat: Mètode static que llista el tipus de pensió que té assignat un registre de la BD.</p>
+<p>El resultat d'aquest mètode és un desplegable on es llisten tots els tipus de pensió que hi ha definits en la base de dades, l'element seleccionat de la llista és el tipus de pensió que està assignat a aquell registre.</p>
+<dl class="params"><dt>Paràmetres</dt><dd>
   <table class="params">
     <tr><td class="paramtype">Integer</td><td class="paramname">$id_pensio_seleccionat</td><td>és el ID del tipus de pensió. </td></tr>
   </table>
@@ -357,7 +370,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistarTipusHabitacio: Mètode static que llista els tipus d'habitació existents des de la BD. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>llistarTipusHabitacio: Mètode static que llista els tipus d'habitació existents des de la BD.</p>
+<p>El resultat d'aquest mètode ñes un desplegable on apareixen tots els tipus d'habitació que existeixen en la base de dades.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -382,7 +397,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistarTipusHabitacioModificar: Mètode static que llista el tipus d'habitació en un modal, agafant l'element &lt;option&gt; que té el registre de la base de dades. </p><dl class="params"><dt>Paràmetres</dt><dd>
+<p>llistarTipusHabitacioModificar: Mètode static que llista el tipus d'habitació que té assignat una habitació en la base de dades.</p>
+<p>El resultat d'aquest mètode és un desplegable amb tots els tipus d'habitació que hi ha en la base de dades, però el que surt seleccionat és el que l'habitació té lligat en la base de dades.</p>
+<dl class="params"><dt>Paràmetres</dt><dd>
   <table class="params">
     <tr><td class="paramtype">Integer</td><td class="paramname">$id_tipus_hab</td><td>és el ID del tipus d'habitació. </td></tr>
   </table>
@@ -412,7 +429,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistatHabitacionsPDF: Mètode static que genera un arxiu <a class="el" href="classPDF.html">PDF</a> amb el llistat d'habitacions </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>llistatHabitacionsPDF: Mètode static que genera un arxiu <a class="el" href="classPDF.html">PDF</a> amb el llistat d'habitacions.</p>
+<p>El resultat d'aquest mètode és un arxiu <a class="el" href="classPDF.html">PDF</a> amb un Header i Footer personalitzats amb tot el llistat d'habitacions amb el número d'habitació, tipus d'habitació i preu de l'habitació en format de taula.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -436,7 +455,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>modificarHabitacio: Mètode static que agafa el ID del modal modificar i realitza un UPDATE en el registre de la BD amb aquest ID. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>modificarHabitacio: Mètode static que agafa el ID del modal modificar i realitza un UPDATE en el registre de la BD amb aquest ID.</p>
+<p>El resultat d'aquest mètode és la modificació d'un registre concret de la taula Habitació.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>

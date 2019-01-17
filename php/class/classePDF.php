@@ -1,10 +1,12 @@
 <?php
 /**
- * classePDF.php: classe que esten la classe FPDF per canviar el Header i Footer dels arxius PDF que generem.
- * @author Grup 3: Evaldas Casas, Joan Manel Sancho
+ * classePDF.php: arxiu de classe que esten la classe FPDF per canviar el Header i Footer dels arxius PDF que generem.
+ * @author Grup 3: Evaldas Casas
  */
 require_once $_SERVER['DOCUMENT_ROOT']."/php/fpdf/fpdf.php";
-
+/**
+ * Classe PDF: esten la classe FPDF per generar documents .pdf
+ */
 class PDF extends FPDF
 {
     /**

@@ -1,10 +1,16 @@
 <?php
 /**
  * classeReservaHabitacio.php: conté els atributs i mètodes de la classe ReservaHabitacio.
- * @author Grup 3: Evaldas Casas, Joan Manel Sancho
+ * @author Grup 3: Evaldas Casas
+ * @version 1.0
  */
 include_once $_SERVER['DOCUMENT_ROOT']."/php/connection.php";
 
+/**
+ * Classe ReservaHabitacio: classe que s'utilitza per crear objectes de tipus ReservaHabitacio,
+ * per introduir reserves en la base de dades, modificar-les, llistar-les i eliminar-les.
+ * Compta amb alguns mètodes auxiliars, com per exemple un per llistar les habitacions lliures en un interval de temps concret.
+ */
 class ReservaHabitacio
 {
     //private $idTipusHabitacio;
@@ -47,7 +53,8 @@ class ReservaHabitacio
     }
 
     /**
-     * __construct11: constructor per crear un objecte ReservaHabitacio amb els atributs necessaris.
+     * __construct11: constructor per crear un objecte de tipus ReservaHabitacio amb els atributs necessaris.
+     *
      * @param  Integer $id_habitacio Hauria de contenir el ID d'habitació
      * @param  Integer $id_usuari    Hauria de contenir el ID d'usuari
      * @param  String $nom          Hauria de contenir el nom del client
@@ -80,6 +87,10 @@ class ReservaHabitacio
 
     /**
      * crearReserva: mètode que realitza un INSERT a la taula RESERVA_HABITACIO amb dades agafades d'un formulari.
+     *
+     * El resultat d'aquest mètode és la inserció d'un registre en la taula RESERVA_HABITACIO que
+     * conté les dades que s'han agafat del formulari de creació de reserves.
+     *
      * @return Void
      */
     public function crearReserva()
@@ -136,6 +147,11 @@ class ReservaHabitacio
 
     /**
      * llistarHabitacionsLliures: Mètode static que llista les habitacions lliures que hi ha en un interval temporal.
+     *
+     * El resultat d'aquest mètode és un llistat en format taula, que mostra les habitacions lliures en un interval de temps
+     * que es defineix al plenar el formulari de creació de reserves. També imprimeix un botó de selecció d'habitació i
+     * un modal on s'insereixen les dades per crear una reserva.
+     *
      * @param  date $data_Entrada          Data d'inici de la reserva
      * @param  date $data_Sortida          Data de fi de la reserva
      * @param  Integer $idTipusHabitacio      ID del tipus d'habitació
@@ -324,6 +340,10 @@ class ReservaHabitacio
 
     /**
      * llistarReservaHabitacio: Mètode static que llista totes les reserves en una taula.
+     *
+     * El resultat d'aquest mètode és una llista de tots els registres de la taula RESERVA_HABITACIO,
+     * també s'imprimeix un botó per modificar i eliminar la reserva, a part dels 2 modals corresponents.
+     *
      * @return Void
      */
     public static function llistarReservaHabitacio()
@@ -530,6 +550,11 @@ class ReservaHabitacio
 
     /**
      * llistarReservaHabitacioBusqueda: Mètode static que filtra els resultats del llistat de reserves.
+     *
+     * El resultat d'aquest mètode és una llista de tots els registres de la taula RESERVA_HABITACIO després de
+     * realitzar una cerca per número d'habitació, nom del client, cognom del client, document d'identitat del client
+     * o telèfon del client, també s'imprimeix un botó per modificar i eliminar la reserva, a part dels 2 modals corresponents.
+     *
      * @return Void
      */
     public static function llistarReservaHabitacioBusqueda()
@@ -741,6 +766,10 @@ class ReservaHabitacio
 
     /**
      * modificarReservaHabitacio: Mètode static que agafa el ID del modal modificar i realitza un UPDATE en el registre de la BD amb aquest ID.
+     *
+     * El resultat d'aquest mètode és la modificació d'un registre concret de la taula RESERVA_HABITACIO, només es permet modificar
+     * dades del client.
+     *
      * @return Void
      */
     public static function modificarReservaHabitacio()
@@ -811,6 +840,9 @@ class ReservaHabitacio
 
     /**
      * eliminarReservaHabitacio: Mètode static que agafa el ID del modal eliminar i elimina el registre de la BD amb aquest ID.
+     *
+     * El resultat d'aquest mètode és la eliminació d'un registre concret de la taula RESERVA_HABITACIO.
+     *
      * @return Void
      */
     public static function eliminarReservaHabitacio()

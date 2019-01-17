@@ -115,7 +115,8 @@ Mètodes Públics Estàtics</h2></td></tr>
 <tr class="separator:abce3b20443e054b0e1d57995a39e04eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripció Detallada</h2>
-<div class="textblock"><p>classeReservaHabitacio.php: conté els atributs i mètodes de la classe <a class="el" href="classReservaHabitacio.html">ReservaHabitacio</a>. </p><dl class="section author"><dt>Autor</dt><dd>Grup 3: Evaldas Casas, Joan Manel Sancho </dd></dl>
+<div class="textblock"><p>classeReservaHabitacio.php: conté els atributs i mètodes de la classe <a class="el" href="classReservaHabitacio.html">ReservaHabitacio</a>. </p><dl class="section author"><dt>Autor</dt><dd>Grup 3: Evaldas Casas </dd></dl>
+<dl class="section version"><dt>Versió</dt><dd>1.0 Classe <a class="el" href="classReservaHabitacio.html">ReservaHabitacio</a>: classe que s'utilitza per crear objectes de tipus <a class="el" href="classReservaHabitacio.html">ReservaHabitacio</a>, per introduir reserves en la base de dades, modificar-les, llistar-les i eliminar-les. Compta amb alguns mètodes auxiliars, com per exemple un per llistar les habitacions lliures en un interval de temps concret. </dd></dl>
 </div><h2 class="groupheader">Documentació del Constructor i el Destructor</h2>
 <a class="anchor" id="acd69ab055c9f57881ad40694bd46ce16"></a>
 <div class="memitem">
@@ -211,7 +212,8 @@ Mètodes Públics Estàtics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>__construct11: constructor per crear un objecte <a class="el" href="classReservaHabitacio.html">ReservaHabitacio</a> amb els atributs necessaris. </p><dl class="params"><dt>Paràmetres</dt><dd>
+<p>__construct11: constructor per crear un objecte de tipus <a class="el" href="classReservaHabitacio.html">ReservaHabitacio</a> amb els atributs necessaris.</p>
+<dl class="params"><dt>Paràmetres</dt><dd>
   <table class="params">
     <tr><td class="paramtype">Integer</td><td class="paramname">$id_habitacio</td><td>Hauria de contenir el ID d'habitació </td></tr>
     <tr><td class="paramtype">Integer</td><td class="paramname">$id_usuari</td><td>Hauria de contenir el ID d'usuari </td></tr>
@@ -243,7 +245,9 @@ Mètodes Públics Estàtics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>crearReserva: mètode que realitza un INSERT a la taula RESERVA_HABITACIO amb dades agafades d'un formulari. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>crearReserva: mètode que realitza un INSERT a la taula RESERVA_HABITACIO amb dades agafades d'un formulari.</p>
+<p>El resultat d'aquest mètode és la inserció d'un registre en la taula RESERVA_HABITACIO que conté les dades que s'han agafat del formulari de creació de reserves.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -267,7 +271,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>eliminarReservaHabitacio: Mètode static que agafa el ID del modal eliminar i elimina el registre de la BD amb aquest ID. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>eliminarReservaHabitacio: Mètode static que agafa el ID del modal eliminar i elimina el registre de la BD amb aquest ID.</p>
+<p>El resultat d'aquest mètode és la eliminació d'un registre concret de la taula RESERVA_HABITACIO.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -320,7 +326,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistarHabitacionsLliures: Mètode static que llista les habitacions lliures que hi ha en un interval temporal. </p><dl class="params"><dt>Paràmetres</dt><dd>
+<p>llistarHabitacionsLliures: Mètode static que llista les habitacions lliures que hi ha en un interval temporal.</p>
+<p>El resultat d'aquest mètode és un llistat en format taula, que mostra les habitacions lliures en un interval de temps que es defineix al plenar el formulari de creació de reserves. També imprimeix un botó de selecció d'habitació i un modal on s'insereixen les dades per crear una reserva.</p>
+<dl class="params"><dt>Paràmetres</dt><dd>
   <table class="params">
     <tr><td class="paramtype">date</td><td class="paramname">$data_Entrada</td><td>Data d'inici de la reserva </td></tr>
     <tr><td class="paramtype">date</td><td class="paramname">$data_Sortida</td><td>Data de fi de la reserva </td></tr>
@@ -354,7 +362,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistarReservaHabitacio: Mètode static que llista totes les reserves en una taula. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>llistarReservaHabitacio: Mètode static que llista totes les reserves en una taula.</p>
+<p>El resultat d'aquest mètode és una llista de tots els registres de la taula RESERVA_HABITACIO, també s'imprimeix un botó per modificar i eliminar la reserva, a part dels 2 modals corresponents.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -378,7 +388,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>llistarReservaHabitacioBusqueda: Mètode static que filtra els resultats del llistat de reserves. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>llistarReservaHabitacioBusqueda: Mètode static que filtra els resultats del llistat de reserves.</p>
+<p>El resultat d'aquest mètode és una llista de tots els registres de la taula RESERVA_HABITACIO després de realitzar una cerca per número d'habitació, nom del client, cognom del client, document d'identitat del client o telèfon del client, també s'imprimeix un botó per modificar i eliminar la reserva, a part dels 2 modals corresponents.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>
@@ -402,7 +414,9 @@ Mètodes Públics Estàtics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>modificarReservaHabitacio: Mètode static que agafa el ID del modal modificar i realitza un UPDATE en el registre de la BD amb aquest ID. </p><dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
+<p>modificarReservaHabitacio: Mètode static que agafa el ID del modal modificar i realitza un UPDATE en el registre de la BD amb aquest ID.</p>
+<p>El resultat d'aquest mètode és la modificació d'un registre concret de la taula RESERVA_HABITACIO, només es permet modificar dades del client.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Void </dd></dl>
 
 </div>
 </div>

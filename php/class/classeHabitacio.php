@@ -1,10 +1,16 @@
 <?php
 /**
- * classeHabitacio.php: conté els atributs i mètodes de la classe Habitacio.
- * @author Grup 3: Evaldas Casas, Joan Manel Sancho
+ * classeHabitacio.php: arxiu que conté els atributs i mètodes de la classe Habitacio.
+ * @author Grup 3: Evaldas Casas
+ * @version 1.0
  */
 include_once $_SERVER['DOCUMENT_ROOT']."/php/connection.php";
 
+/**
+ * Classe Habitacio: classe que s'utilitza per crear objectes de tipus Habitacio,
+ * per introduir habitacions en la base de dades, modificar-les, llistar-les i eliminar-les.
+ * Compta amb alguns mètodes auxiliars, com per exemple un per llistar les habitacions.
+ */
 class Habitacio
 {
     /** @var String hauria de contenir el ID_habitacio */
@@ -36,7 +42,7 @@ class Habitacio
     }
 
     /**
-     * __construct2: Constructor per utilitzar al crear una habitació
+     * __construct2: Constructor per utilitzar al crear un objecte de tipus habitació
      * @param  $numHab   hauria de contenir el número d'habitació
      * @param  $tipusHab hauria de contenir el tipus d'habitació
      * @return Void
@@ -52,6 +58,10 @@ class Habitacio
 
     /**
     * crearHabitacio: Mètode que agafa les dades d'un formulari i les insereix en la base de dades.
+    *
+    * El resultat d'aquest mètode és la inserció d'un registre en la taula Habitació de la BD,
+    * aquest registre conté les dades que s'han agafat del formulari de creació d'habitacions.
+    *
     * @return Void
     */
     public function crearHabitacio()
@@ -92,6 +102,10 @@ class Habitacio
 
     /**
      * llistarHabitacio: Mètode static que llista totes les habitacions que hi ha a la base de dades relacionant el ID del tipus d'habitació amb el nom del tipus d'habitació.
+     *
+     * El resultat d'aquest mètode és una taula on apareixen els registres de la taula Habitació.
+     * També imprimeix botons per eliminar i modificar, a part dels modals que estaran ocults fins que s'activin els botons.
+     *
      * @return Void
      */
     public static function llistarHabitacio()
@@ -224,7 +238,13 @@ class Habitacio
     }
 
     /**
-     * llistarHabitacionsBusqueda: Mètode static que realitza una cerca del valor que li introduim en la barra de cerca en la taula de les habitacions en la base de dades.
+     * llistarHabitacionsBusqueda: Mètode static que realitza una cerca del valor que li
+     * introduim en la barra de cerca en la taula de les habitacions en la base de dades.
+     *
+     * El resultat d'aquest mètode és una taula on apareixen els registres de la taula Habitació
+     * que continguin el valor que s'ha escrit en la barra de cerca. També imprimeix botons per eliminar i modificar,
+     * a part dels modals que estaran ocults fins que s'activin els botons.
+     *
      * @return Void
      */
     public static function llistarHabitacionsBusqueda()
@@ -360,6 +380,9 @@ class Habitacio
 
     /**
      * modificarHabitacio: Mètode static que agafa el ID del modal modificar i realitza un UPDATE en el registre de la BD amb aquest ID.
+     *
+     * El resultat d'aquest mètode és la modificació d'un registre concret de la taula Habitació.
+     *
      * @return Void
      */
     public static function modificarHabitacio()
@@ -388,6 +411,9 @@ class Habitacio
 
     /**
      * eliminarHabitacio: Mètode static que agafa el ID del modal eliminar i elimina el registre de la BD amb aquest ID.
+     *
+     * El resultat d'aquest mètode és la eliminació d'un registre concret de la taula Habitació.
+     *
      * @return Void
      */
     public static function eliminarHabitacio()
@@ -414,6 +440,10 @@ class Habitacio
 
     /**
      * llistarTipusHabitacio: Mètode static que llista els tipus d'habitació existents des de la BD.
+     *
+     * El resultat d'aquest mètode ñes un desplegable on apareixen tots els tipus d'habitació que
+     * existeixen en la base de dades.
+     *
      * @return Void
      */
     public static function llistarTipusHabitacio()
@@ -444,7 +474,11 @@ class Habitacio
     }
 
     /**
-     * llistarTipusHabitacioModificar: Mètode static que llista el tipus d'habitació en un modal, agafant l'element <option> que té el registre de la base de dades.
+     * llistarTipusHabitacioModificar: Mètode static que llista el tipus d'habitació que té assignat una habitació en la base de dades.
+     *
+     * El resultat d'aquest mètode és un desplegable amb tots els tipus d'habitació que hi ha en la base de dades, però el que surt seleccionat
+     * és el que l'habitació té lligat en la base de dades.
+     *
      * @param  Integer $id_tipus_hab és el ID del tipus d'habitació.
      * @return Void
      */
@@ -482,6 +516,10 @@ class Habitacio
 
     /**
      * llistarPensio: Mètode static que llista els tipus de pensió.
+     *
+     * El resultat d'aquest mètode és un desplegable on es llisten tots els tipus de
+     * pensió que hi ha definits en la base de dades.
+     *
      * @return Void
      */
     public static function llistarPensio()
@@ -514,6 +552,11 @@ class Habitacio
 
     /**
      * llistarPensioSeleccionat: Mètode static que llista el tipus de pensió que té assignat un registre de la BD.
+     *
+     * El resultat d'aquest mètode és un desplegable on es llisten tots els tipus de
+     * pensió que hi ha definits en la base de dades, l'element seleccionat de la llista és el
+     * tipus de pensió que està assignat a aquell registre.
+     *
      * @param  Integer $id_pensio_seleccionat és el ID del tipus de pensió.
      * @return Void
      */
@@ -551,7 +594,11 @@ class Habitacio
     }
 
     /**
-     * llistatHabitacionsPDF: Mètode static que genera un arxiu PDF amb el llistat d'habitacions
+     * llistatHabitacionsPDF: Mètode static que genera un arxiu PDF amb el llistat d'habitacions.
+     *
+     * El resultat d'aquest mètode és un arxiu PDF amb un Header i Footer personalitzats amb tot el llistat d'habitacions
+     * amb el número d'habitació, tipus d'habitació i preu de l'habitació en format de taula.
+     *
      * @return Void
      */
     public static function llistatHabitacionsPDF()
