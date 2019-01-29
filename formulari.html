@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ES">
+
+<head>
+    <title>Proves Array JS</title>
+    <link rel="icon" href="/img/icon.png" type="image/gif">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+
+    <style>
+        .ui-datepicker-calendar {
+            display:none;
+        }
+        #tooltip {
+            position: absolute;
+            display: none;
+            border: 1px solid #999;
+            background-color: #ccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body onload="checkCookie()">
+    <!-- NAVBAR 1 -->
+    <nav class="navbar navbar-expand-sm py-0">
+        <div class="collapse navbar-collapse flex-row-reverse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> Idioma </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">ES</a></li>
+                        <li><a class="dropdown-item" href="#">CA</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/img/mapa_parc.jpg">Mapa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/javascript.php">Minijocs</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/login.php">Login</a>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-default btn-sm" onclick="window.location.href='/php/viewCart.php'">
+                        <img src="/img/carrito.png">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- NAVBAR 2 -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-4">
+        <a class="navbar-brand" href="/index.php">Univeylandia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> Parc </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/noticies/noticies_1.php">Noticies</a></li>
+                        <li><a class="dropdown-item" href="/promocions.php">Promocions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/atraccions/atraccions.php">Atraccions</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> Hotel </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/hotel/habitacions.php">Habitacions</a></li>
+
+                        <li><a class="dropdown-item" href="/hotel/restaurant.php">Restaurants</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> Entrades </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/Entrades/parc/entrades1.php">Parc</a></li>
+                        <li><a class="dropdown-item" href="/Entrades/hoteliparc/entrades2.php">Parc+Hotel</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/php/carritooo.php">Tenda</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTINGUT -->
+    <div class="container jumbotron text-center d-flex justify-content-center" style="margin-top:30px">
+        <div class="row">
+            <div class="container">
+                <h1>Formulari de compra</h1>
+            </div>
+            <div class="col-sm-12">
+                <form method="post">
+                    <div class="form-row">
+                        <div class="col-md-3 mb-3">
+                            <label>Nom *</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Nom" id="firstname"
+                                required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Cognom *</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Cognom" id="lastname"
+                                required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Correu electrònic *</label>
+                            <input id="email" type="text" class="form-control form-control-sm" placeholder="Email" name="email"
+                                onfocus="focusGained(this)" onblur="focusLost(this)" title="example@example.com"
+                                required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Número de telèfon</label>
+                            <input id="tlf" type="text" class="form-control form-control-sm" placeholder="Telèfon" name="tlf"
+                                onfocus="focusGained(this)" onblur="focusLost(this)" title="123456789">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Número de targeta de crèdit *</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Número de targeta" id="card_num"
+                                name="card_num" onfocus="focusGained(this)" onblur="focusLost(this)" title="3485 427054 92983"
+                                required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Caducitat targeta *</label>
+                            <input type="text" id="txtDate" class="form-control form-control-sm" name="card_date"
+                                placeholder="Mes/Any" required />
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Adreça</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Adreça" name="address"
+                                required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Opció d'enviament</label>
+                            <select class="form-control form-control-sm" name="tipus_hab" required>
+                                <option value="1">En 72 hores</option>
+                                <option value="2">En 48 hores</option>
+                                <option value="3">En 24 hores</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Client premium</label>
+                            <input type="radio" value="si" name="pregunta" id="pregunta_si" /> Si
+                            <input type="radio" value="no" name="pregunta" id="pregunta_no" /> No
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <input type="checkbox" value="condicions" name="condicions" id="condicions" /> He llegit
+                            i
+                            accepto les condicions
+                        </div>
+                        <div id="tooltip"></div>
+                    </div>
+                    <input class="btn btn-primary" type="button" value="Acceptar" onclick="validacion();" />
+                    <button class="btn btn-secondary" type="reset">Cancel·lar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="jumbotron text-center" width="100%" style="margin-bottom:0">
+        <div class="row">
+            <div class="col-sm-2">
+                <h6>Univeylandia</h6>
+                <ul class="list-inline">
+                    <li><a href="#">Sobre nosaltres</a></li>
+                    <li><a href="#">Reconeixements</a></li>
+                    <li><a href="#">Treballa amb nosaltres</a></li>
+                    <li><a href="#">Partners</a></li>
+                    <li><a href="#">Contacte</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <h6>Condicions</h6>
+                <ul class="list-inline">
+                    <li><a href="#">Condicions generals</a></li>
+                    <li><a href="#">Política de privacitat</a></li>
+                    <li><a href="#">Normes del Resort</a></li>
+                    <li><a href="#">Politica de cookies</a></li>
+                    <li><a href="/sitemap.php">MAPA WEB</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <h6>Parc</h6>
+                <ul class="list-inline">
+                    <li><a href="#">Atraccions</a></li>
+                    <li><a href="#">Hotel</a></li>
+                    <li><a href="#">Restaurants</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h3>Truca'ns</h3>
+                <p>642 18 90 00</p>
+            </div>
+            <div class="col-sm-3">
+                <h3>Segueix-nos</h3>
+                <a href="#">
+                    <img class="img_face" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDQ5LjY1MiA0OS42NTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ5LjY1MiA0OS42NTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjQuODI2LDBDMTEuMTM3LDAsMCwxMS4xMzcsMCwyNC44MjZjMCwxMy42ODgsMTEuMTM3LDI0LjgyNiwyNC44MjYsMjQuODI2YzEzLjY4OCwwLDI0LjgyNi0xMS4xMzgsMjQuODI2LTI0LjgyNiAgICBDNDkuNjUyLDExLjEzNywzOC41MTYsMCwyNC44MjYsMHogTTMxLDI1LjdoLTQuMDM5YzAsNi40NTMsMCwxNC4zOTYsMCwxNC4zOTZoLTUuOTg1YzAsMCwwLTcuODY2LDAtMTQuMzk2aC0yLjg0NXYtNS4wODhoMi44NDUgICAgdi0zLjI5MWMwLTIuMzU3LDEuMTItNi4wNCw2LjA0LTYuMDRsNC40MzUsMC4wMTd2NC45MzljMCwwLTIuNjk1LDAtMy4yMTksMGMtMC41MjQsMC0xLjI2OSwwLjI2Mi0xLjI2OSwxLjM4NnYyLjk5aDQuNTZMMzEsMjUuN3ogICAgIiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
+                </a>
+                <a href="#">
+                    <img class="img_face" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDQ5LjY1MiA0OS42NTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ5LjY1MiA0OS42NTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjQuODI2LDBDMTEuMTM3LDAsMCwxMS4xMzcsMCwyNC44MjZjMCwxMy42ODgsMTEuMTM3LDI0LjgyNiwyNC44MjYsMjQuODI2YzEzLjY4OCwwLDI0LjgyNi0xMS4xMzgsMjQuODI2LTI0LjgyNiAgICBDNDkuNjUyLDExLjEzNywzOC41MTYsMCwyNC44MjYsMHogTTM1LjkwMSwxOS4xNDRjMC4wMTEsMC4yNDYsMC4wMTcsMC40OTQsMC4wMTcsMC43NDJjMCw3LjU1MS01Ljc0NiwxNi4yNTUtMTYuMjU5LDE2LjI1NSAgICBjLTMuMjI3LDAtNi4yMzEtMC45NDMtOC43NTktMi41NjVjMC40NDcsMC4wNTMsMC45MDIsMC4wOCwxLjM2MywwLjA4YzIuNjc4LDAsNS4xNDEtMC45MTQsNy4wOTctMi40NDYgICAgYy0yLjUtMC4wNDYtNC42MTEtMS42OTgtNS4zMzgtMy45NjljMC4zNDgsMC4wNjYsMC43MDcsMC4xMDMsMS4wNzQsMC4xMDNjMC41MjEsMCwxLjAyNy0wLjA2OCwxLjUwNi0wLjE5OSAgICBjLTIuNjE0LTAuNTI0LTQuNTgzLTIuODMzLTQuNTgzLTUuNjAzYzAtMC4wMjQsMC0wLjA0OSwwLjAwMS0wLjA3MmMwLjc3LDAuNDI3LDEuNjUxLDAuNjg1LDIuNTg3LDAuNzE0ICAgIGMtMS41MzItMS4wMjMtMi41NDEtMi43NzMtMi41NDEtNC43NTVjMC0xLjA0OCwwLjI4MS0yLjAzLDAuNzczLTIuODc0YzIuODE3LDMuNDU4LDcuMDI5LDUuNzMyLDExLjc3Nyw1Ljk3MiAgICBjLTAuMDk4LTAuNDE5LTAuMTQ3LTAuODU0LTAuMTQ3LTEuMzAzYzAtMy4xNTUsMi41NTgtNS43MTQsNS43MTMtNS43MTRjMS42NDQsMCwzLjEyNywwLjY5NCw0LjE3MSwxLjgwNCAgICBjMS4zMDMtMC4yNTYsMi41MjMtMC43MywzLjYzLTEuMzg3Yy0wLjQzLDEuMzM1LTEuMzMzLDIuNDU0LTIuNTE2LDMuMTYyYzEuMTU3LTAuMTM4LDIuMjYxLTAuNDQ0LDMuMjgyLTAuODk5ICAgIEMzNy45ODcsMTcuMzM0LDM3LjAxOCwxOC4zNDEsMzUuOTAxLDE5LjE0NHoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                </a>
+                <a href="#">
+                    <img class="img_face" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDQ5LjY1MiA0OS42NTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ5LjY1MiA0OS42NTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8Zz4KCQkJPHBhdGggZD0iTTI0LjgyNSwyOS43OTZjMi43MzksMCw0Ljk3Mi0yLjIyOSw0Ljk3Mi00Ljk3YzAtMS4wODItMC4zNTQtMi4wODEtMC45NC0yLjg5N2MtMC45MDMtMS4yNTItMi4zNzEtMi4wNzMtNC4wMjktMi4wNzMgICAgIGMtMS42NTksMC0zLjEyNiwwLjgyLTQuMDMxLDIuMDcyYy0wLjU4OCwwLjgxNi0wLjkzOSwxLjgxNS0wLjk0LDIuODk3QzE5Ljg1NCwyNy41NjYsMjIuMDg1LDI5Ljc5NiwyNC44MjUsMjkuNzk2eiIgZmlsbD0iIzAwMDAwMCIvPgoJCQk8cG9seWdvbiBwb2ludHM9IjM1LjY3OCwxOC43NDYgMzUuNjc4LDE0LjU4IDM1LjY3OCwxMy45NiAzNS4wNTUsMTMuOTYyIDMwLjg5MSwxMy45NzUgMzAuOTA3LDE4Ljc2MiAgICAiIGZpbGw9IiMwMDAwMDAiLz4KCQkJPHBhdGggZD0iTTI0LjgyNiwwQzExLjEzNywwLDAsMTEuMTM3LDAsMjQuODI2YzAsMTMuNjg4LDExLjEzNywyNC44MjYsMjQuODI2LDI0LjgyNmMxMy42ODgsMCwyNC44MjYtMTEuMTM4LDI0LjgyNi0yNC44MjYgICAgIEM0OS42NTIsMTEuMTM3LDM4LjUxNiwwLDI0LjgyNiwweiBNMzguOTQ1LDIxLjkyOXYxMS41NmMwLDMuMDExLTIuNDQ4LDUuNDU4LTUuNDU3LDUuNDU4SDE2LjE2NCAgICAgYy0zLjAxLDAtNS40NTctMi40NDctNS40NTctNS40NTh2LTExLjU2di01Ljc2NGMwLTMuMDEsMi40NDctNS40NTcsNS40NTctNS40NTdoMTcuMzIzYzMuMDEsMCw1LjQ1OCwyLjQ0Nyw1LjQ1OCw1LjQ1N1YyMS45Mjl6IiBmaWxsPSIjMDAwMDAwIi8+CgkJCTxwYXRoIGQ9Ik0zMi41NDksMjQuODI2YzAsNC4yNTctMy40NjQsNy43MjMtNy43MjMsNy43MjNjLTQuMjU5LDAtNy43MjItMy40NjYtNy43MjItNy43MjNjMC0xLjAyNCwwLjIwNC0yLjAwMywwLjU2OC0yLjg5NyAgICAgaC00LjIxNXYxMS41NmMwLDEuNDk0LDEuMjEzLDIuNzA0LDIuNzA2LDIuNzA0aDE3LjMyM2MxLjQ5MSwwLDIuNzA2LTEuMjEsMi43MDYtMi43MDR2LTExLjU2aC00LjIxNyAgICAgQzMyLjM0MiwyMi44MjMsMzIuNTQ5LDIzLjgwMiwzMi41NDksMjQuODI2eiIgZmlsbD0iIzAwMDAwMCIvPgoJCTwvZz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+
+    <!--Scripts propis-->
+    <script>
+        function validacion() {
+
+            //validacio de direcció de correu electrònic
+            var regex2 = new RegExp('^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$', 'i');
+            var email = document.getElementById("email").value;
+            var isValidEmail = false;
+
+            if (regex2.test(email)) {
+                isValidEmail = true;
+            }
+
+            if (isValidEmail == false) {
+                alert("Introdueix una direcció de correu electrònic correcta!");
+            }
+
+            //validació de número de dígits de telèfon
+            var regex3 = new RegExp('^\d{9}$');
+            var tlf = document.getElementById("tlf").value;
+            var isValidTlf = false;
+
+            if (regex3.test(tlf)) {
+                isValidTlf = true;
+            }
+
+            if (isValidTlf == false) {
+                alert("[ERROR] El format del Número de telèfon no es correcte!");
+            }
+
+            //validacio de targeta de credit
+            var ccNum = document.getElementById("card_num").value;
+            var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+            var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
+            var amexpRegEx = /^(?:3[47][0-9]{13})$/;
+            var discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+            var isValid = false;
+
+            if (visaRegEx.test(ccNum)) {
+                isValid = true;
+            } else if (mastercardRegEx.test(ccNum)) {
+                isValid = true;
+            } else if (amexpRegEx.test(ccNum)) {
+                isValid = true;
+            } else if (discovRegEx.test(ccNum)) {
+                isValid = true;
+            }
+
+            if (isValid == false) {
+                alert("Introdueix un número de targeta vàlid!");
+            }
+
+            //determina si ets client premspam (radiobutton)
+            var radio_button = document.getElementsByName("pregunta");
+            var triat = false;
+
+            for (i = 0; i < radio_button.length; i++) {
+                if (radio_button[i].checked == true) {
+                    triat = true;
+                }
+            }
+
+            if (triat == false) {
+                alert("No has triat si ets client premium");
+            }
+
+            //determina si aceptes les condicions
+            var elemento = document.getElementById("condicions");
+
+            if (elemento.checked == false) {
+                alert("No has acceptat les condicions");
+            }
+
+            definirCookie();
+        }
+
+        //Desplegable per triar la data de expiració targeta credit
+        $(document).ready(function () {
+            if (document.forms.length > 0) {
+                for (var i = 0; i < document.forms[0].elements.length; i++) {
+                    var campo = document.forms[0].elements[i];
+                    if (campo.type != "hidden") {
+                        campo.focus();
+                        break;
+                    }
+                }
+            }
+            $('#txtDate').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'MM yy',
+
+                onClose: function () {
+                    var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                },
+
+                beforeShow: function () {
+                    if ((selDate = $(this).val()).length > 0) {
+                        iYear = selDate.substring(selDate.length - 4, selDate.length);
+                        iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                        $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                        $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                    }
+                }
+            });
+        });
+
+        //Focus i blur
+        function focusGained(x) {
+            x.style.background = "yellow";
+            var tooltip = document.getElementById("tooltip");
+            tooltip.innerHTML = x.title;
+            tooltip.style.display = "block";
+            tooltip.style.top = x.offsetTop - tooltip.offsetHeight + "em";
+            tooltip.style.left = x.offsetLeft + "em";
+        }
+
+        function focusLost(x) {
+            x.style.background = "white";
+            var tooltip = document.getElementById("tooltip");
+            tooltip.style.display = "none";
+            tooltip.style.top = "-9999px";
+            tooltip.style.left = "-9999px";
+        }
+
+        //Cookies
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            var firstname = getCookie("firstname");
+            var lastname = getCookie("lastname");
+            if (firstname != "" && lastname != "") {
+                alert("Benvingut altra vegada " + firstname + " " + lastname);
+            }
+        }
+
+        function definirCookie() {
+            firstname = document.getElementById('firstname').value;
+            if (firstname != "" && firstname != null) {
+                setCookie("firstname", firstname, 30);
+            }
+            lastname = document.getElementById('lastname').value;
+            if (lastname != "" && lastname != null) {
+                setCookie("lastname", lastname, 30);
+            }
+        }
+
+        function deleteCookie() {
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+
+    </script>
