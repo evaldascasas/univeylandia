@@ -106,7 +106,7 @@
                 <h1>Formulari de compra</h1>
             </div>
             <div class="col-sm-12">
-                <form method="post">
+                <form method="post" onsubmit="validacion();">
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label>Nom *</label>
@@ -131,8 +131,8 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label>Número de targeta de crèdit *</label>
-                            <input type="text" class="form-control form-control-sm" placeholder="Número de targeta" id="card_num"
-                                name="card_num" onfocus="focusGained(this)" onblur="focusLost(this)" title="3485 427054 92983"
+                            <input id="card_num" type="text" class="form-control form-control-sm" placeholder="Número de targeta"
+                                name="card_num" onfocus="focusGained(this)" onblur="focusLost(this)" title="4024 0071 3368 2905"
                                 required>
                         </div>
                         <div class="col-md-3 mb-3">
@@ -165,8 +165,9 @@
                         </div>
                         <div id="tooltip"></div>
                     </div>
-                    <input class="btn btn-primary" type="button" value="Acceptar" onclick="validacion();" />
+                    <input class="btn btn-primary" type="submit" value="Acceptar" />
                     <button class="btn btn-secondary" type="reset">Cancel·lar</button>
+                    <input class="btn btn-warning" type="button" value="Netejar cookies" onclick="deleteCookie()"/>
                 </form>
             </div>
         </div>
@@ -233,7 +234,7 @@
         function validacion() {
 
             //validacio de direcció de correu electrònic
-            var regex2 = new RegExp('^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$', 'i');
+            var regex2 = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/, 'i');
             var email = document.getElementById("email").value;
             var isValidEmail = false;
 
@@ -246,7 +247,7 @@
             }
 
             //validació de número de dígits de telèfon
-            var regex3 = new RegExp('^\d{9}$');
+            var regex3 = new RegExp(/^\d{9}$/);
             var tlf = document.getElementById("tlf").value;
             var isValidTlf = false;
 
@@ -260,10 +261,10 @@
 
             //validacio de targeta de credit
             var ccNum = document.getElementById("card_num").value;
-            var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-            var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
-            var amexpRegEx = /^(?:3[47][0-9]{13})$/;
-            var discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+            var visaRegEx = new RegExp(/^(?:4[0-9]{12}(?:[0-9]{3})?)$/);
+            var mastercardRegEx = new RegExp(/^(?:5[1-5][0-9]{14})$/);
+            var amexpRegEx = new RegExp(/^(?:3[47][0-9]{13})$/);
+            var discovRegEx = new RegExp(/^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/);
             var isValid = false;
 
             if (visaRegEx.test(ccNum)) {
@@ -383,7 +384,8 @@
             var firstname = getCookie("firstname");
             var lastname = getCookie("lastname");
             if (firstname != "" && lastname != "") {
-                alert("Benvingut altra vegada " + firstname + " " + lastname);
+                document.getElementById('firstname').value = firstname;
+                document.getElementById('lastname').value = lastname;
             }
         }
 
@@ -399,7 +401,8 @@
         }
 
         function deleteCookie() {
-            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "lastname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         }
 
     </script>
