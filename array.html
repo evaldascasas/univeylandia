@@ -134,6 +134,13 @@
 				<button class="btn btn-danger" onclick="buidar_cistella()">Buidar articles</button>
 				<a onclick="comprovarCistella()" class="btn btn-success">Comprar</a>
 			</div>
+			<div class="col-sm-12">
+				<button class="btn btn-info" id="info">jQuery Chaining</button>
+			</div>
+			<div class="col-sm-12" id="jquery" style="background:#ffffff;height:100px;width:100px;position:absolute;">
+				<h6>Infomació d'enviament</h6>
+				<p id="p1"></p>
+			</div>
 		</div>
 	</div>
 
@@ -302,6 +309,30 @@
 			$(this).find('.modal-body > img.image_modal').attr('src', src);
 		});
 
+	</script>
+
+
+	<script>
+		//jQuery
+		$(document).ready(function () {
+			//jQuery hide
+			$("#jquery").hide();
+			$("#info").click(function () {
+				//jQuery setText
+				$("#p1").text("Aquests articles s'envien depenent del mètode d'enviament que es triï en el formulari de compra");
+				//jQuery show
+				$("#jquery").show();
+				// jQuery chaining = slideUp, slideDown, prepend
+				$("#p1").css("color", "red").slideUp(2000).slideDown(2000).slideUp(2000).prepend("<b>NO reembolsable</b>.");
+				//jQuery animate
+				$("#jquery").animate({
+					left: '250px',
+					opacity: '0.4',
+					height: '150px',
+					width: '150px'
+				}).hide(8000);//jQuery hide
+			});
+		});
 	</script>
 
 </body>
